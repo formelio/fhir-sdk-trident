@@ -55,7 +55,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "47e4f2b81832e72834d7518d8487a0396a28cc408186a2e8854c0f98011faf12"
 dependencies = [
  "serde",
- "serde_json",
+ "serde_json 1.0.145",
 ]
 
 [[package]]
@@ -248,7 +248,7 @@ dependencies = [
  "publicsuffix",
  "serde",
  "serde_derive",
- "serde_json",
+ "serde_json 1.0.145",
  "time",
  "url",
 ]
@@ -495,7 +495,7 @@ dependencies = [
  "base64",
  "derive_builder",
  "serde",
- "serde_json",
+ "serde_json 1.0.145",
  "time",
 ]
 
@@ -520,7 +520,7 @@ dependencies = [
  "futures",
  "reqwest",
  "serde",
- "serde_json",
+ "serde_json 1.0.149",
  "thiserror 2.0.17",
  "tokio",
  "tokio-retry",
@@ -683,7 +683,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "regex",
- "serde_json",
+ "serde_json 1.0.145",
  "syn",
 ]
 
@@ -1713,7 +1713,7 @@ dependencies = [
  "rustls-pki-types",
  "rustls-platform-verifier",
  "serde",
- "serde_json",
+ "serde_json 1.0.145",
  "serde_urlencoded",
  "sync_wrapper",
  "tokio",
@@ -1973,6 +1973,18 @@ dependencies = [
  "ryu",
  "serde",
  "serde_core",
+]
+
+[[package]]
+name = "serde_json"
+version = "1.0.149"
+source = "git+https://github.com/serde-rs/json#a42fa980f8556cda36d896fa3713544b2e5eaa2c"
+dependencies = [
+ "itoa",
+ "memchr",
+ "serde",
+ "serde_core",
+ "zmij",
 ]
 
 [[package]]
@@ -3012,7 +3024,7 @@ dependencies = [
  "once_cell",
  "regex",
  "serde",
- "serde_json",
+ "serde_json 1.0.145",
  "tokio",
  "url",
 ]
@@ -3131,6 +3143,12 @@ dependencies = [
  "quote",
  "syn",
 ]
+
+[[package]]
+name = "zmij"
+version = "1.0.21"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
 
 [[package]]
 name = "zstd"
