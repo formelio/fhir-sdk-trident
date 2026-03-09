@@ -84,3 +84,6 @@ wiremock = "0.6.5"
 [package.metadata.docs.rs]
 features = ["r5", "builders", "client", "docs", "dep-defaults"]
 no-default-features = true
+
+[patch.crates-io]
+serde_json = { git = "https://github.com/serde-rs/json",  version = "1.0.95" }
