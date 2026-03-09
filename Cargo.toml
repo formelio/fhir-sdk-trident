@@ -153,3 +153,6 @@ used_underscore_binding = "warn"
 used_underscore_items = "warn"
 useless_let_if_seq = "warn"
 verbose_file_reads = "warn"
+
+[patch.crates-io]
+serde_json = { git = "https://github.com/serde-rs/json", version = "1.0.145" }

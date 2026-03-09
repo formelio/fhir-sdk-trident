@@ -68,7 +68,7 @@ fhir-model = { path = "../fhir-model", version = "0.12.1", default-features = fa
 futures = { version = "0.3.28", optional = true }
 reqwest = { version = "0.13.1", default-features = false, features = ["json", "query", "form"], optional = true }
 serde = { version = "1.0.159" }
-serde_json = { git = "https://github.com/serde-rs/json",  version = "1.0.95", optional = true }
+serde_json = { version = "1.0.145", optional = true }
 thiserror = { version = "2.0.11", optional = true }
 tokio = { version = "1.43.1", features = ["sync"], optional = true }
 tokio-retry = { version = "0.3.0", optional = true }
@@ -84,6 +84,3 @@ wiremock = "0.6.5"
 [package.metadata.docs.rs]
 features = ["r5", "builders", "client", "docs", "dep-defaults"]
 no-default-features = true
-
-[patch.crates-io]
-serde_json = { git = "https://github.com/serde-rs/json",  version = "1.0.149" }
