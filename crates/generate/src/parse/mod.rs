@@ -4,7 +4,7 @@
 pub mod codes;
 pub mod structures;
 
-use fhir_model::{r4b, r5, stu3};
+use ::fhir_model::{r4b, r5, stu3};
 
 use crate::model::{CodeSystemContentMode, PublicationStatus, StructureDefinitionKind};
 

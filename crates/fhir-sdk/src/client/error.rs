@@ -1,13 +1,13 @@
 //! Client errors.
 
 #[cfg(feature = "r4b")]
-use fhir_model::r4b;
+use ::fhir_model::r4b;
 #[cfg(feature = "r5")]
-use fhir_model::r5;
+use ::fhir_model::r5;
 #[cfg(feature = "stu3")]
-use fhir_model::stu3;
-use reqwest::StatusCode;
-use thiserror::Error;
+use ::fhir_model::stu3;
+use ::reqwest::StatusCode;
+use ::thiserror::Error;
 
 use crate::version::FhirVersion;
 

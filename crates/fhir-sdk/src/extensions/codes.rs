@@ -1,6 +1,6 @@
 //! General functionality on codes.
 
-use fhir_model::for_all_versions;
+use ::fhir_model::for_all_versions;
 
 /// `SearchEntryMode` functionality.
 pub trait SearchEntryModeExt {

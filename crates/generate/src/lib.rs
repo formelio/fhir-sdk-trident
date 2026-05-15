@@ -5,10 +5,9 @@ mod generate;
 mod model;
 mod parse;
 
-use std::fs;
-
-use anyhow::{Context, Result};
-use proc_macro2::TokenStream;
+use ::neuer_error::{ConvertResult, Result};
+use ::proc_macro2::TokenStream;
+use ::std::fs;
 
 use crate::model::StructureDefinitionKind;
 

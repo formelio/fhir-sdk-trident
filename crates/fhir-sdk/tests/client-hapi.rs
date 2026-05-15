@@ -11,14 +11,13 @@
 
 mod common;
 
-use std::{env, str::FromStr};
-
-use anyhow::Result;
-use fhir_sdk::{
+use ::fhir_sdk::{
 	Date, TryStreamExt,
 	client::{Client, ResourceWrite, SearchParameters, TokenSearch},
 	for_all_versions,
 };
+use ::neuer_error::Result;
+use ::std::{env, str::FromStr};
 
 // Rustfmt gives up on this one :(
 /// Client tests via HAPI for every supported FHIR version.

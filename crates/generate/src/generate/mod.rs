@@ -5,12 +5,11 @@ mod gen_codes;
 mod gen_traits;
 mod gen_types;
 
-use std::collections::HashMap;
-
-use anyhow::Result;
-use inflector::Inflector;
-use proc_macro2::{Ident, TokenStream};
-use quote::{format_ident, quote};
+use ::heck::ToSnakeCase;
+use ::neuer_error::Result;
+use ::proc_macro2::{Ident, TokenStream};
+use ::quote::{format_ident, quote};
+use ::std::collections::HashMap;
 
 use crate::model::{CodeSystemContentMode, StructureDefinitionKind, codes::Code, structures::Type};
 

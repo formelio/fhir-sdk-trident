@@ -9,17 +9,17 @@ mod misc;
 mod request;
 mod search;
 
-use std::{marker::PhantomData, sync::Arc};
-
-use ::std::any::type_name;
-use misc::parse_major_fhir_version;
-use reqwest::{StatusCode, Url, header};
+use ::reqwest::{StatusCode, Url, header};
+use ::std::{any::type_name, marker::PhantomData, sync::Arc};
 
 pub use self::{
 	aliases::*, auth::LoginManager, builder::ClientBuilder, error::Error, fhir::*,
 	request::RequestSettings, search::SearchParameters,
 };
-use self::{auth::AuthCallback, misc::make_uuid_header_value};
+use self::{
+	auth::AuthCallback,
+	misc::{make_uuid_header_value, parse_major_fhir_version},
+};
 use crate::version::{DefaultVersion, FhirR4B, FhirR5, FhirStu3, FhirVersion};
 
 /// FHIR REST Client.

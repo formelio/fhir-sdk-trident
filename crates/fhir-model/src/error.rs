@@ -1,7 +1,7 @@
 //! Error implementation.
 
 #[cfg(feature = "builders")]
-use derive_builder::UninitializedFieldError;
+use ::derive_builder::UninitializedFieldError;
 
 /// Wrong resource type for conversion to the specified type.
 #[derive(Debug, Clone, PartialEq, Eq)]

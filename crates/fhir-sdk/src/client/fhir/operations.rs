@@ -1,7 +1,7 @@
 //! Implementation of certain FHIR operations.
 
-use fhir_model::for_all_versions;
-use reqwest::header;
+use ::fhir_model::for_all_versions;
+use ::reqwest::header;
 
 use super::{Client, Error};
 use crate::version::{FhirVersion, fhir_version};

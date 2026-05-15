@@ -26529,11 +26529,11 @@ NTLM. Microsoft NTLM Authentication. */
     /** **OAuth**
 
 OAuth. Oauth (unspecified version see oauth.net). */
-    Oauth,
+    OAuth,
     /** **SMART-on-FHIR**
 
 SMART-on-FHIR. OAuth2 using SMART-on-FHIR profile (see http://docs.smarthealthit.org/). */
-    SmartOnFHIR,
+    SmartOnFhir,
 }
 impl ::core::str::FromStr for RestfulSecurityService {
     type Err = String;
@@ -26547,8 +26547,8 @@ impl ::core::str::FromStr for RestfulSecurityService {
             "Certificates" => Ok(Self::Certificates),
             "Kerberos" => Ok(Self::Kerberos),
             "NTLM" => Ok(Self::Ntlm),
-            "OAuth" => Ok(Self::Oauth),
-            "SMART-on-FHIR" => Ok(Self::SmartOnFHIR),
+            "OAuth" => Ok(Self::OAuth),
+            "SMART-on-FHIR" => Ok(Self::SmartOnFhir),
             _ => Err(format!("Unknown value: {s}")),
         }
     }
@@ -26560,8 +26560,8 @@ impl AsRef<str> for RestfulSecurityService {
             Self::Certificates => "Certificates",
             Self::Kerberos => "Kerberos",
             Self::Ntlm => "NTLM",
-            Self::Oauth => "OAuth",
-            Self::SmartOnFHIR => "SMART-on-FHIR",
+            Self::OAuth => "OAuth",
+            Self::SmartOnFhir => "SMART-on-FHIR",
         }
     }
 }

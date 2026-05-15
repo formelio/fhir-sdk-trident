@@ -1,8 +1,7 @@
 //! Structures parsing.
 
-use std::collections::BTreeMap;
-
-use fhir_model::{r4b, r5, stu3};
+use ::fhir_model::{r4b, r5, stu3};
+use ::std::collections::BTreeMap;
 
 use crate::model::structures::{ChoiceField, CodeField, Field, ObjectField, StandardField, Type};
 

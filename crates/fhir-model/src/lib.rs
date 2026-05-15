@@ -17,11 +17,10 @@ mod resource_type;
 #[cfg(feature = "stu3")]
 pub mod stu3;
 
-use std::ops::{Deref, DerefMut};
-
-use base64::prelude::{BASE64_STANDARD, Engine};
-use serde::{Deserialize, Serialize};
-pub use time;
+use ::base64::prelude::{BASE64_STANDARD, Engine};
+use ::serde::{Deserialize, Serialize};
+use ::std::ops::{Deref, DerefMut};
+pub use ::time;
 
 pub use self::{date_time::*, error::*, references::*};
 

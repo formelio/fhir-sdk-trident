@@ -1,10 +1,10 @@
 //! Patch request building.
 
-use reqwest::{
+use ::reqwest::{
 	StatusCode,
 	header::{self, HeaderValue},
 };
-use serde::Serialize;
+use ::serde::Serialize;
 
 use super::{Client, Error};
 use crate::{

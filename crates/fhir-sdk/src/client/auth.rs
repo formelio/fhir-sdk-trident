@@ -1,9 +1,8 @@
 //! Authentication helpers & implementation.
 
-use std::future::Future;
-
-use async_trait::async_trait;
-use reqwest::header::HeaderValue;
+use ::async_trait::async_trait;
+use ::reqwest::header::HeaderValue;
+use ::std::future::Future;
 
 /// Error type of the auth callback.
 type AuthCallbackError = Box<dyn std::error::Error + Send + Sync>;
@@ -112,10 +111,12 @@ where
 mod tests {
 	#![allow(dead_code, reason = "Just check whether it compiles")]
 
+	use ::neuer_error::{NeuErr, Result};
+
 	use super::*;
 
-	async fn auth_test_fn(_client: reqwest::Client) -> anyhow::Result<HeaderValue> {
-		anyhow::bail!("Test");
+	async fn auth_test_fn(_client: reqwest::Client) -> Result<HeaderValue> {
+		Err(NeuErr::new("Test").remove_marker())
 	}
 
 	fn construct_test_fn() -> AuthCallback {
@@ -127,14 +128,14 @@ mod tests {
 	}
 
 	impl LoginManager for MyLoginManager {
-		type Error = anyhow::Error;
+		type Error = NeuErr;
 
 		async fn authenticate(
 			&mut self,
 			_client: reqwest::Client,
 		) -> Result<HeaderValue, Self::Error> {
 			if self.fail_after == 0 {
-				anyhow::bail!("test");
+				Err(NeuErr::new("test").remove_marker())
 			} else {
 				self.fail_after -= 1;
 				Ok(HeaderValue::from_static("whatever"))
@@ -149,7 +150,7 @@ mod tests {
 	fn construct_test_closure() -> AuthCallback {
 		AuthCallback::new(async |client: reqwest::Client| {
 			let _response = client.get("invalid URL").send().await?;
-			anyhow::Ok(HeaderValue::from_static("ignored"))
+			neuer_error::Ok(HeaderValue::from_static("ignored"))
 		})
 	}
 }

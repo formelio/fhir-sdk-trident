@@ -20827,27 +20827,27 @@ pub enum ContributorSummaryStyle {
     /** **a1full**
 
 First author (full name) et al. Example: Jennifer Laskowski et al. */
-    A1Full,
+    A1full,
     /** **a1init**
 
 First author (last name first initials) et al. Example: Laskowski J et al. */
-    A1Init,
+    A1init,
     /** **a3full**
 
 First 3 authors (full name) et al. Example: Jennifer Laskowski, Brandon Renner, Matthew C. Pickering, et al. */
-    A3Full,
+    A3full,
     /** **a3init**
 
 First 3 authors (last name first initials) et al. Example:  Laskowski J, Renner B, Pickering MC, et al. */
-    A3Init,
+    A3init,
     /** **a6full**
 
 First 6 authors (full name) et al. Example: Jennifer Laskowski, Brandon Renner, Matthew C. Pickering, Natalie J. Serkova, Peter M. Smith-Jones, Eric T. Clambey, et al. */
-    A6Full,
+    A6full,
     /** **a6init**
 
 First 6 authors (last name first initials) et al. Example: Laskowski J, Renner B, Pickering MC, Serkova NJ, Smith-Jones PM, Clambey ET, et al. */
-    A6Init,
+    A6init,
     /** **aallfull**
 
 All authors (full name). Example: Jennifer Laskowski, Brandon Renner, Matthew C. Pickering, Natalie J. Serkova, Peter M. Smith-Jones, Eric T. Clambey, Raphael A. Nemenoff, Joshua M. Thurman. */
@@ -20897,12 +20897,12 @@ impl ::core::str::FromStr for ContributorSummaryStyle {
     )]
     fn from_str(s: &str) -> ::core::result::Result<Self, Self::Err> {
         match s {
-            "a1full" => Ok(Self::A1Full),
-            "a1init" => Ok(Self::A1Init),
-            "a3full" => Ok(Self::A3Full),
-            "a3init" => Ok(Self::A3Init),
-            "a6full" => Ok(Self::A6Full),
-            "a6init" => Ok(Self::A6Init),
+            "a1full" => Ok(Self::A1full),
+            "a1init" => Ok(Self::A1init),
+            "a3full" => Ok(Self::A3full),
+            "a3init" => Ok(Self::A3init),
+            "a6full" => Ok(Self::A6full),
+            "a6init" => Ok(Self::A6init),
             "aallfull" => Ok(Self::Aallfull),
             "aallfullwithampersand" => Ok(Self::Aallfullwithampersand),
             "aallfullwithand" => Ok(Self::Aallfullwithand),
@@ -20920,12 +20920,12 @@ impl ::core::str::FromStr for ContributorSummaryStyle {
 impl AsRef<str> for ContributorSummaryStyle {
     fn as_ref(&self) -> &str {
         match self {
-            Self::A1Full => "a1full",
-            Self::A1Init => "a1init",
-            Self::A3Full => "a3full",
-            Self::A3Init => "a3init",
-            Self::A6Full => "a6full",
-            Self::A6Init => "a6init",
+            Self::A1full => "a1full",
+            Self::A1init => "a1init",
+            Self::A3full => "a3full",
+            Self::A3init => "a3init",
+            Self::A6full => "a6full",
+            Self::A6init => "a6init",
             Self::Aallfull => "aallfull",
             Self::Aallfullwithampersand => "aallfullwithampersand",
             Self::Aallfullwithand => "aallfullwithand",
@@ -25843,7 +25843,7 @@ HL7 FHIR. Interact with the server interface using FHIR's RESTful interface. For
     /** **hl7v2-mllp**
 
 HL7 v2 MLLP. HL7v2 messages over an LLP TCP connection */
-    Hl7V2Mllp,
+    Hl7v2Mllp,
     /** **ihe-iid**
 
 IHE IID. IHE Invoke Image Display (IID) - http://wiki.ihe.net/index.php/Invoke_Image_Display */
@@ -25886,7 +25886,7 @@ impl ::core::str::FromStr for EndpointConnectionType {
             "direct-project" => Ok(Self::DirectProject),
             "hl7-fhir-msg" => Ok(Self::Hl7FhirMsg),
             "hl7-fhir-rest" => Ok(Self::Hl7FhirRest),
-            "hl7v2-mllp" => Ok(Self::Hl7V2Mllp),
+            "hl7v2-mllp" => Ok(Self::Hl7v2Mllp),
             "ihe-iid" => Ok(Self::IheIid),
             "ihe-xca" => Ok(Self::IheXca),
             "ihe-xcpd" => Ok(Self::IheXcpd),
@@ -25907,7 +25907,7 @@ impl AsRef<str> for EndpointConnectionType {
             Self::DirectProject => "direct-project",
             Self::Hl7FhirMsg => "hl7-fhir-msg",
             Self::Hl7FhirRest => "hl7-fhir-rest",
-            Self::Hl7V2Mllp => "hl7v2-mllp",
+            Self::Hl7v2Mllp => "hl7v2-mllp",
             Self::IheIid => "ihe-iid",
             Self::IheXca => "ihe-xca",
             Self::IheXcpd => "ihe-xcpd",
@@ -27615,7 +27615,7 @@ No blinding. No blinding. */
     /** **NoITT**
 
 No intention-to-treat analysis. No intention-to-treat analysis. */
-    NoITT,
+    NoItt,
     /** **NotAssessed**
 
 Not rated, not assessed. Neither rated as yes nor rated as no. */
@@ -27671,7 +27671,7 @@ classified as other concept (not elsewhere classified). classified as other conc
     /** **RatedAsRCT**
 
 classified as randomized controlled trial. classified as randomized controlled trial. */
-    RatedAsRCT,
+    RatedAsRct,
     /** **RatedAsUncontrolledSeries**
 
 classified as uncontrolled cohort (case series). classified as uncontrolled cohort (case series). */
@@ -27718,7 +27718,7 @@ impl ::core::str::FromStr for EvidenceClassifier {
             "EarlyTrialTermination" => Ok(Self::EarlyTrialTermination),
             "Guideline" => Ok(Self::Guideline),
             "NoBlinding" => Ok(Self::NoBlinding),
-            "NoITT" => Ok(Self::NoITT),
+            "NoITT" => Ok(Self::NoItt),
             "NotAssessed" => Ok(Self::NotAssessed),
             "NotResearchNotGuideline" => Ok(Self::NotResearchNotGuideline),
             "OriginalResearch" => Ok(Self::OriginalResearch),
@@ -27732,7 +27732,7 @@ impl ::core::str::FromStr for EvidenceClassifier {
             "RatedAsMixedMethods" => Ok(Self::RatedAsMixedMethods),
             "RatedAsNo" => Ok(Self::RatedAsNo),
             "RatedAsOther" => Ok(Self::RatedAsOther),
-            "RatedAsRCT" => Ok(Self::RatedAsRCT),
+            "RatedAsRCT" => Ok(Self::RatedAsRct),
             "RatedAsUncontrolledSeries" => Ok(Self::RatedAsUncontrolledSeries),
             "RatedAsYes" => Ok(Self::RatedAsYes),
             "ResearchProtocol" => Ok(Self::ResearchProtocol),
@@ -27756,7 +27756,7 @@ impl AsRef<str> for EvidenceClassifier {
             Self::EarlyTrialTermination => "EarlyTrialTermination",
             Self::Guideline => "Guideline",
             Self::NoBlinding => "NoBlinding",
-            Self::NoITT => "NoITT",
+            Self::NoItt => "NoITT",
             Self::NotAssessed => "NotAssessed",
             Self::NotResearchNotGuideline => "NotResearchNotGuideline",
             Self::OriginalResearch => "OriginalResearch",
@@ -27770,7 +27770,7 @@ impl AsRef<str> for EvidenceClassifier {
             Self::RatedAsMixedMethods => "RatedAsMixedMethods",
             Self::RatedAsNo => "RatedAsNo",
             Self::RatedAsOther => "RatedAsOther",
-            Self::RatedAsRCT => "RatedAsRCT",
+            Self::RatedAsRct => "RatedAsRCT",
             Self::RatedAsUncontrolledSeries => "RatedAsUncontrolledSeries",
             Self::RatedAsYes => "RatedAsYes",
             Self::ResearchProtocol => "ResearchProtocol",
@@ -46685,7 +46685,7 @@ Michigan behavior and mental health consent. Michigan DCH-3927 Consent to Share 
     /** **ga4gh**
 
 Population origins and ancestry research consent. Global Alliance for Genomic Health Data Sharing Consent Form is an example of the GA4GH Population origins and ancestry research consent form. Consenters agree to permitting a specified research project to collect ancestry and genetic information in controlled-access databases, and to allow other researchers to use deidentified information from those databases. http://www.commonaccord.org/index.php?action=doc&file=Wx/org/genomicsandhealth/REWG/Demo/Roberta_Robinson_US */
-    Ga4Gh,
+    Ga4gh,
     /** **hipaa-auth**
 
 HIPAA Authorization. HIPAA 45 CFR Section 164.508 Uses and disclosures for which an authorization is required. (a) Standard: Authorizations for uses and disclosures. (1) Authorization required: General rule. Except as otherwise permitted or required by this subchapter, a covered entity SHALL not use or disclose protected health information without an authorization that is valid under this section. When a covered entity obtains or receives a valid authorization for its use or disclosure of protected health information, such use or disclosure must be consistent with such authorization. Usage Note: Authorizations governed under this regulation meet the definition of an opt in class of consent directive. */
@@ -46765,11 +46765,11 @@ VA Form 10-5345. VA Form 10-5345 Request for and Authorization to Release Medica
     /** **va-10-5345a**
 
 VA Form 10-5345a. VA Form 10-5345a Individuals' Request for a Copy of Their Own Health Information enables a veteran to request and authorize the VA to release specified copies of protected health information (PHI), such as hospital summary or outpatient treatment notes. Note: Form is available at http://www.va.gov/vaforms/medical/pdf/vha-10-5345a-fill.pdf */
-    Va105345A,
+    Va105345a,
     /** **va-10-5345a-mhv**
 
 VA Form 10-5345a-MHV. VA Form 10-5345a-MHV Individual's Request for a Copy of their own health information from MyHealtheVet enables a veteran to receive a copy of all available personal health information to be delivered through the veteran's My HealtheVet account. Note: Form is available at http://www.va.gov/vaforms/medical/pdf/vha-10-5345a-MHV-fill.pdf */
-    Va105345AMhv,
+    Va105345aMhv,
     /** **va-21-4142**
 
 VA Form 21-4142. VA Form 21-4142 (Authorization and Consent to Release Information to the Department of Veterans Affairs (VA) enables a veteran to authorize the US Veterans Administration [VA] to request veteran's health information from non-VA providers. Aka VA Compensation Application Note: Form is available at http://www.vba.va.gov/pubs/forms/VBA-21-4142-ARE.pdf . For additional information regarding VA Form 21-4142, refer to the following website: www.benefits.va.gov/compensation/consent_privateproviders */
@@ -46788,7 +46788,7 @@ impl ::core::str::FromStr for PolicyCodes {
             "at-elga" => Ok(Self::AtElga),
             "cric" => Ok(Self::Cric),
             "dch-3927" => Ok(Self::Dch3927),
-            "ga4gh" => Ok(Self::Ga4Gh),
+            "ga4gh" => Ok(Self::Ga4gh),
             "hipaa-auth" => Ok(Self::HipaaAuth),
             "hipaa-npp" => Ok(Self::HipaaNpp),
             "hipaa-research" => Ok(Self::HipaaResearch),
@@ -46808,8 +46808,8 @@ impl ::core::str::FromStr for PolicyCodes {
             "va-10-0485" => Ok(Self::Va100485),
             "va-10-10116" => Ok(Self::Va1010116),
             "va-10-5345" => Ok(Self::Va105345),
-            "va-10-5345a" => Ok(Self::Va105345A),
-            "va-10-5345a-mhv" => Ok(Self::Va105345AMhv),
+            "va-10-5345a" => Ok(Self::Va105345a),
+            "va-10-5345a-mhv" => Ok(Self::Va105345aMhv),
             "va-21-4142" => Ok(Self::Va214142),
             _ => Ok(Self::_Custom(s.to_owned())),
         }
@@ -46821,7 +46821,7 @@ impl AsRef<str> for PolicyCodes {
             Self::AtElga => "at-elga",
             Self::Cric => "cric",
             Self::Dch3927 => "dch-3927",
-            Self::Ga4Gh => "ga4gh",
+            Self::Ga4gh => "ga4gh",
             Self::HipaaAuth => "hipaa-auth",
             Self::HipaaNpp => "hipaa-npp",
             Self::HipaaResearch => "hipaa-research",
@@ -46841,8 +46841,8 @@ impl AsRef<str> for PolicyCodes {
             Self::Va100485 => "va-10-0485",
             Self::Va1010116 => "va-10-10116",
             Self::Va105345 => "va-10-5345",
-            Self::Va105345A => "va-10-5345a",
-            Self::Va105345AMhv => "va-10-5345a-mhv",
+            Self::Va105345a => "va-10-5345a",
+            Self::Va105345aMhv => "va-10-5345a-mhv",
             Self::Va214142 => "va-21-4142",
             Self::_Custom(s) => s.as_str(),
         }
@@ -47356,7 +47356,7 @@ pub enum ProductContactType {
     /** **PVEnquiries**
 
 Pharmacovigilance Enquiry Information. Pharmacovigilance Enquiry Information */
-    Pvenquiries,
+    PvEnquiries,
     /** **ProcedureContactAfter**
 
 Person/Company authorised for Communication after procedure. Person/Company authorised for Communication between MAH and Authorities after Authorisation */
@@ -47368,7 +47368,7 @@ Person/Company authorised for Communication during procedure. Person/Company aut
     /** **ProposedMAH**
 
 Proposed Marketing Authorisation Holder/Person. Proposed Marketing Authorisation Holder/Person */
-    ProposedMAH,
+    ProposedMah,
     /** **QPPV**
 
 Qualified Person Responsible for Pharmacovigilance. Qualified Person Responsible for Pharmacovigilance */
@@ -47382,10 +47382,10 @@ impl ::core::str::FromStr for ProductContactType {
     )]
     fn from_str(s: &str) -> ::core::result::Result<Self, Self::Err> {
         match s {
-            "PVEnquiries" => Ok(Self::Pvenquiries),
+            "PVEnquiries" => Ok(Self::PvEnquiries),
             "ProcedureContactAfter" => Ok(Self::ProcedureContactAfter),
             "ProcedureContactDuring" => Ok(Self::ProcedureContactDuring),
-            "ProposedMAH" => Ok(Self::ProposedMAH),
+            "ProposedMAH" => Ok(Self::ProposedMah),
             "QPPV" => Ok(Self::Qppv),
             _ => Err(format!("Unknown value: {s}")),
         }
@@ -47394,10 +47394,10 @@ impl ::core::str::FromStr for ProductContactType {
 impl AsRef<str> for ProductContactType {
     fn as_ref(&self) -> &str {
         match self {
-            Self::Pvenquiries => "PVEnquiries",
+            Self::PvEnquiries => "PVEnquiries",
             Self::ProcedureContactAfter => "ProcedureContactAfter",
             Self::ProcedureContactDuring => "ProcedureContactDuring",
-            Self::ProposedMAH => "ProposedMAH",
+            Self::ProposedMah => "ProposedMAH",
             Self::Qppv => "QPPV",
         }
     }
@@ -47908,11 +47908,11 @@ Modified International Non-Proprietary Name. */
     /** **pINN**
 
 Proposed International Non-Proprietary Name. */
-    Pinn,
+    PInn,
     /** **rINN**
 
 Recommended International Non-Proprietary Name. */
-    Rinn,
+    RInn,
 }
 impl ::core::str::FromStr for ProductNameType {
     type Err = String;
@@ -47925,8 +47925,8 @@ impl ::core::str::FromStr for ProductNameType {
             "BAN" => Ok(Self::Ban),
             "INN" => Ok(Self::Inn),
             "INNM" => Ok(Self::Innm),
-            "pINN" => Ok(Self::Pinn),
-            "rINN" => Ok(Self::Rinn),
+            "pINN" => Ok(Self::PInn),
+            "rINN" => Ok(Self::RInn),
             _ => Err(format!("Unknown value: {s}")),
         }
     }
@@ -47937,8 +47937,8 @@ impl AsRef<str> for ProductNameType {
             Self::Ban => "BAN",
             Self::Inn => "INN",
             Self::Innm => "INNM",
-            Self::Pinn => "pINN",
-            Self::Rinn => "rINN",
+            Self::PInn => "pINN",
+            Self::RInn => "rINN",
         }
     }
 }
@@ -50602,7 +50602,7 @@ Follow-up Measure. */
     /** **InitialMAA**
 
 Initial Marketing Authorisation Application. */
-    InitialMAA,
+    InitialMaa,
     /** **LiftingSuspension**
 
 Lifting of a Suspension. */
@@ -50658,7 +50658,7 @@ Supplemental Information. */
     /** **TransferMA**
 
 Transfer of a marketing authorisation. */
-    TransferMA,
+    TransferMa,
     /** **UrgentSafetyRestriction**
 
 Urgent Safety Restriction. */
@@ -50684,7 +50684,7 @@ impl ::core::str::FromStr for RegulatedAuthorizationCaseType {
             "AnnualReassessment" => Ok(Self::AnnualReassessment),
             "FLU" => Ok(Self::Flu),
             "Follow-up" => Ok(Self::FollowUp),
-            "InitialMAA" => Ok(Self::InitialMAA),
+            "InitialMAA" => Ok(Self::InitialMaa),
             "LiftingSuspension" => Ok(Self::LiftingSuspension),
             "LineExtension" => Ok(Self::LineExtension),
             "Orphan" => Ok(Self::Orphan),
@@ -50698,7 +50698,7 @@ impl ::core::str::FromStr for RegulatedAuthorizationCaseType {
             "ReviewSuspension" => Ok(Self::ReviewSuspension),
             "SignalDetection" => Ok(Self::SignalDetection),
             "SupplementalInformation" => Ok(Self::SupplementalInformation),
-            "TransferMA" => Ok(Self::TransferMA),
+            "TransferMA" => Ok(Self::TransferMa),
             "UrgentSafetyRestriction" => Ok(Self::UrgentSafetyRestriction),
             "Variation" => Ok(Self::Variation),
             "Withdrawal" => Ok(Self::Withdrawal),
@@ -50713,7 +50713,7 @@ impl AsRef<str> for RegulatedAuthorizationCaseType {
             Self::AnnualReassessment => "AnnualReassessment",
             Self::Flu => "FLU",
             Self::FollowUp => "Follow-up",
-            Self::InitialMAA => "InitialMAA",
+            Self::InitialMaa => "InitialMAA",
             Self::LiftingSuspension => "LiftingSuspension",
             Self::LineExtension => "LineExtension",
             Self::Orphan => "Orphan",
@@ -50727,7 +50727,7 @@ impl AsRef<str> for RegulatedAuthorizationCaseType {
             Self::ReviewSuspension => "ReviewSuspension",
             Self::SignalDetection => "SignalDetection",
             Self::SupplementalInformation => "SupplementalInformation",
-            Self::TransferMA => "TransferMA",
+            Self::TransferMa => "TransferMA",
             Self::UrgentSafetyRestriction => "UrgentSafetyRestriction",
             Self::Variation => "Variation",
             Self::Withdrawal => "Withdrawal",
@@ -54637,11 +54637,11 @@ NTLM. Microsoft NTLM Authentication. */
     /** **OAuth**
 
 OAuth. OAuth (unspecified version see oauth.net). */
-    Oauth,
+    OAuth,
     /** **SMART-on-FHIR**
 
 SMART-on-FHIR. OAuth2 using SMART-on-FHIR profile (see http://docs.smarthealthit.org/). */
-    SmartOnFHIR,
+    SmartOnFhir,
 }
 impl ::core::str::FromStr for RestfulSecurityService {
     type Err = String;
@@ -54655,8 +54655,8 @@ impl ::core::str::FromStr for RestfulSecurityService {
             "Certificates" => Ok(Self::Certificates),
             "Kerberos" => Ok(Self::Kerberos),
             "NTLM" => Ok(Self::Ntlm),
-            "OAuth" => Ok(Self::Oauth),
-            "SMART-on-FHIR" => Ok(Self::SmartOnFHIR),
+            "OAuth" => Ok(Self::OAuth),
+            "SMART-on-FHIR" => Ok(Self::SmartOnFhir),
             _ => Err(format!("Unknown value: {s}")),
         }
     }
@@ -54668,8 +54668,8 @@ impl AsRef<str> for RestfulSecurityService {
             Self::Certificates => "Certificates",
             Self::Kerberos => "Kerberos",
             Self::Ntlm => "NTLM",
-            Self::Oauth => "OAuth",
-            Self::SmartOnFHIR => "SMART-on-FHIR",
+            Self::OAuth => "OAuth",
+            Self::SmartOnFhir => "SMART-on-FHIR",
         }
     }
 }
@@ -54863,7 +54863,7 @@ pub enum SPDXLicense {
     /** **0BSD**
 
 BSD Zero Clause License. BSD Zero Clause License. */
-    N0Bsd,
+    N0bsd,
     /** **AAL**
 
 Attribution Assurance License. Attribution Assurance License. */
@@ -55007,11 +55007,11 @@ BSD 2-Clause "Simplified" License. BSD 2-Clause "Simplified" License. */
     /** **BSD-2-Clause-FreeBSD**
 
 BSD 2-Clause FreeBSD License. BSD 2-Clause FreeBSD License. */
-    Bsd2ClauseFreeBSD,
+    Bsd2ClauseFreeBsd,
     /** **BSD-2-Clause-NetBSD**
 
 BSD 2-Clause NetBSD License. BSD 2-Clause NetBSD License. */
-    Bsd2ClauseNetBSD,
+    Bsd2ClauseNetBsd,
     /** **BSD-2-Clause-Patent**
 
 BSD-2-Clause Plus Patent License. BSD-2-Clause Plus Patent License. */
@@ -55031,7 +55031,7 @@ BSD 3-Clause Clear License. BSD 3-Clause Clear License. */
     /** **BSD-3-Clause-LBNL**
 
 Lawrence Berkeley National Labs BSD variant license. Lawrence Berkeley National Labs BSD variant license. */
-    Bsd3ClauseLBNL,
+    Bsd3ClauseLbnl,
     /** **BSD-3-Clause-No-Nuclear-License**
 
 BSD 3-Clause No Nuclear License. BSD 3-Clause No Nuclear License. */
@@ -55051,7 +55051,7 @@ BSD 4-Clause "Original" or "Old" License. BSD 4-Clause "Original" or "Old" Licen
     /** **BSD-4-Clause-UC**
 
 BSD-4-Clause (University of California-Specific). BSD-4-Clause (University of California-Specific). */
-    Bsd4ClauseUC,
+    Bsd4ClauseUc,
     /** **BSD-Protection**
 
 BSD Protection License. BSD Protection License. */
@@ -55267,7 +55267,7 @@ CNRI Python License. CNRI Python License. */
     /** **CNRI-Python-GPL-Compatible**
 
 CNRI Python Open Source GPL Compatible License Agreement. CNRI Python Open Source GPL Compatible License Agreement. */
-    CnriPythonGPLCompatible,
+    CnriPythonGplCompatible,
     /** **CPAL-1.0**
 
 Common Public Attribution License 1.0. Common Public Attribution License 1.0. */
@@ -55351,7 +55351,7 @@ Eclipse Public License 2.0. Eclipse Public License 2.0. */
     /** **EUDatagrid**
 
 EU DataGrid Software License. EU DataGrid Software License. */
-    Eudatagrid,
+    EuDatagrid,
     /** **EUPL-1.0**
 
 European Union Public License 1.0. European Union Public License 1.0. */
@@ -55371,7 +55371,7 @@ Entessa Public License v1.0. Entessa Public License v1.0. */
     /** **ErlPL-1.1**
 
 Erlang Public License v1.1. Erlang Public License v1.1. */
-    ErlPL11,
+    ErlPl11,
     /** **Eurosym**
 
 Eurosym License. Eurosym License. */
@@ -55431,7 +55431,7 @@ GNU Free Documentation License v1.3 or later. GNU Free Documentation License v1.
     /** **GL2PS**
 
 GL2PS License. GL2PS License. */
-    Gl2Ps,
+    Gl2ps,
     /** **GPL-1.0-only**
 
 GNU General Public License v1.0 only. GNU General Public License v1.0 only. */
@@ -55511,7 +55511,7 @@ Imlib2 License. Imlib2 License. */
     /** **Info-ZIP**
 
 Info-ZIP License. Info-ZIP License. */
-    InfoZIP,
+    InfoZip,
     /** **Intel**
 
 Intel Open Source License. Intel Open Source License. */
@@ -55519,7 +55519,7 @@ Intel Open Source License. Intel Open Source License. */
     /** **Intel-ACPI**
 
 Intel ACPI Software License Agreement. Intel ACPI Software License Agreement. */
-    IntelACPI,
+    IntelAcpi,
     /** **Interbase-1.0**
 
 Interbase Public License v1.0. Interbase Public License v1.0. */
@@ -55591,15 +55591,15 @@ LaTeX Project Public License v1.2. LaTeX Project Public License v1.2. */
     /** **LPPL-1.3a**
 
 LaTeX Project Public License v1.3a. LaTeX Project Public License v1.3a. */
-    Lppl13A,
+    Lppl13a,
     /** **LPPL-1.3c**
 
 LaTeX Project Public License v1.3c. LaTeX Project Public License v1.3c. */
-    Lppl13C,
+    Lppl13c,
     /** **Latex2e**
 
 Latex2e License. Latex2e License. */
-    Latex2E,
+    Latex2e,
     /** **Leptonica**
 
 Leptonica License. Leptonica License. */
@@ -55623,7 +55623,7 @@ libpng License. libpng License. */
     /** **Linux-OpenIB**
 
 Linux Kernel Variant of OpenIB.org license. Linux Kernel Variant of OpenIB.org license. */
-    LinuxOpenIB,
+    LinuxOpenIb,
     /** **MIT**
 
 MIT License. MIT License. */
@@ -55687,7 +55687,7 @@ MakeIndex License. MakeIndex License. */
     /** **MirOS**
 
 MirOS License. MirOS License. */
-    MirOS,
+    MirOs,
     /** **Motosoto**
 
 Motosoto License. Motosoto License. */
@@ -55755,11 +55755,11 @@ Naumen Public License. Naumen Public License. */
     /** **Net-SNMP**
 
 Net-SNMP License. Net-SNMP License. */
-    NetSNMP,
+    NetSnmp,
     /** **NetCDF**
 
 NetCDF license. NetCDF license. */
-    NetCDF,
+    NetCdf,
     /** **Newsletr**
 
 Newsletr License. Newsletr License. */
@@ -55783,7 +55783,7 @@ OCLC Research Public License 2.0. OCLC Research Public License 2.0. */
     /** **ODbL-1.0**
 
 ODC Open Database License v1.0. ODC Open Database License v1.0. */
-    OdbL10,
+    ODbL10,
     /** **OFL-1.0**
 
 SIL Open Font License 1.0. SIL Open Font License 1.0. */
@@ -55895,7 +55895,7 @@ Open Software License 3.0. Open Software License 3.0. */
     /** **OpenSSL**
 
 OpenSSL License. OpenSSL License. */
-    OpenSSL,
+    OpenSsl,
     /** **PDDL-1.0**
 
 ODC Public Domain Dedication & License 1.0. ODC Public Domain Dedication & License 1.0. */
@@ -55915,7 +55915,7 @@ Plexus Classworlds License. Plexus Classworlds License. */
     /** **PostgreSQL**
 
 PostgreSQL License. PostgreSQL License. */
-    PostgreSQL,
+    PostgreSql,
     /** **Python-2.0**
 
 Python License 2.0. Python License 2.0. */
@@ -55931,7 +55931,7 @@ Qhull License. Qhull License. */
     /** **RHeCos-1.1**
 
 Red Hat eCos Public License v1.1. Red Hat eCos Public License v1.1. */
-    RheCos11,
+    RHeCos11,
     /** **RPL-1.1**
 
 Reciprocal Public License 1.1. Reciprocal Public License 1.1. */
@@ -56019,7 +56019,7 @@ Sendmail License. Sendmail License. */
     /** **SimPL-2.0**
 
 Simple Public License 2.0. Simple Public License 2.0. */
-    SimPL20,
+    SimPl20,
     /** **Sleepycat**
 
 Sleepycat License. Sleepycat License. */
@@ -56039,7 +56039,7 @@ Spencer License 99. Spencer License 99. */
     /** **SugarCRM-1.1.3**
 
 SugarCRM Public License v1.1.3. SugarCRM Public License v1.1.3. */
-    SugarCRM113,
+    SugarCrm113,
     /** **TCL**
 
 TCL/TK License. TCL/TK License. */
@@ -56051,7 +56051,7 @@ TCP Wrappers License. TCP Wrappers License. */
     /** **TMate**
 
 TMate Open Source License. TMate Open Source License. */
-    Tmate,
+    TMate,
     /** **TORQUE-1.1**
 
 TORQUE v2.5+ Software License v1.1. TORQUE v2.5+ Software License v1.1. */
@@ -56067,15 +56067,15 @@ Universal Permissive License v1.0. Universal Permissive License v1.0. */
     /** **Unicode-DFS-2015**
 
 Unicode License Agreement - Data Files and Software (2015). Unicode License Agreement - Data Files and Software (2015). */
-    UnicodeDFS2015,
+    UnicodeDfs2015,
     /** **Unicode-DFS-2016**
 
 Unicode License Agreement - Data Files and Software (2016). Unicode License Agreement - Data Files and Software (2016). */
-    UnicodeDFS2016,
+    UnicodeDfs2016,
     /** **Unicode-TOU**
 
 Unicode Terms of Use. Unicode Terms of Use. */
-    UnicodeTOU,
+    UnicodeTou,
     /** **Unlicense**
 
 The Unlicense. The Unlicense. */
@@ -56095,15 +56095,15 @@ Vim License. Vim License. */
     /** **W3C**
 
 W3C Software Notice and License (2002-12-31). W3C Software Notice and License (2002-12-31). */
-    W3C,
+    W3c,
     /** **W3C-19980720**
 
 W3C Software Notice and License (1998-07-20). W3C Software Notice and License (1998-07-20). */
-    W3C19980720,
+    W3c19980720,
     /** **W3C-20150513**
 
 W3C Software Notice and Document License (2015-05-13). W3C Software Notice and Document License (2015-05-13). */
-    W3C20150513,
+    W3c20150513,
     /** **WTFPL**
 
 Do What The F*ck You Want To Public License. Do What The F*ck You Want To Public License. */
@@ -56123,11 +56123,11 @@ X11 License. X11 License. */
     /** **XFree86-1.1**
 
 XFree86 License 1.1. XFree86 License 1.1. */
-    Xfree8611,
+    XFree8611,
     /** **XSkat**
 
 XSkat License. XSkat License. */
-    Xskat,
+    XSkat,
     /** **Xerox**
 
 Xerox License. Xerox License. */
@@ -56199,11 +56199,11 @@ dvipdfm License. dvipdfm License. */
     /** **eGenix**
 
 eGenix.com Public License 1.1.0. eGenix.com Public License 1.1.0. */
-    Egenix,
+    EGenix,
     /** **gSOAP-1.3b**
 
 gSOAP Public License v1.3b. gSOAP Public License v1.3b. */
-    Gsoap13B,
+    GSoap13b,
     /** **gnuplot**
 
 gnuplot License. gnuplot License. */
@@ -56211,7 +56211,7 @@ gnuplot License. gnuplot License. */
     /** **iMatix**
 
 iMatix Standard Function Library Agreement. iMatix Standard Function Library Agreement. */
-    Imatix,
+    IMatix,
     /** **libtiff**
 
 libtiff License. libtiff License. */
@@ -56253,7 +56253,7 @@ impl ::core::str::FromStr for SPDXLicense {
     )]
     fn from_str(s: &str) -> ::core::result::Result<Self, Self::Err> {
         match s {
-            "0BSD" => Ok(Self::N0Bsd),
+            "0BSD" => Ok(Self::N0bsd),
             "AAL" => Ok(Self::Aal),
             "ADSL" => Ok(Self::Adsl),
             "AFL-1.1" => Ok(Self::Afl11),
@@ -56289,20 +56289,20 @@ impl ::core::str::FromStr for SPDXLicense {
             "Artistic-2.0" => Ok(Self::Artistic20),
             "BSD-1-Clause" => Ok(Self::Bsd1Clause),
             "BSD-2-Clause" => Ok(Self::Bsd2Clause),
-            "BSD-2-Clause-FreeBSD" => Ok(Self::Bsd2ClauseFreeBSD),
-            "BSD-2-Clause-NetBSD" => Ok(Self::Bsd2ClauseNetBSD),
+            "BSD-2-Clause-FreeBSD" => Ok(Self::Bsd2ClauseFreeBsd),
+            "BSD-2-Clause-NetBSD" => Ok(Self::Bsd2ClauseNetBsd),
             "BSD-2-Clause-Patent" => Ok(Self::Bsd2ClausePatent),
             "BSD-3-Clause" => Ok(Self::Bsd3Clause),
             "BSD-3-Clause-Attribution" => Ok(Self::Bsd3ClauseAttribution),
             "BSD-3-Clause-Clear" => Ok(Self::Bsd3ClauseClear),
-            "BSD-3-Clause-LBNL" => Ok(Self::Bsd3ClauseLBNL),
+            "BSD-3-Clause-LBNL" => Ok(Self::Bsd3ClauseLbnl),
             "BSD-3-Clause-No-Nuclear-License" => Ok(Self::Bsd3ClauseNoNuclearLicense),
             "BSD-3-Clause-No-Nuclear-License-2014" => {
                 Ok(Self::Bsd3ClauseNoNuclearLicense2014)
             }
             "BSD-3-Clause-No-Nuclear-Warranty" => Ok(Self::Bsd3ClauseNoNuclearWarranty),
             "BSD-4-Clause" => Ok(Self::Bsd4Clause),
-            "BSD-4-Clause-UC" => Ok(Self::Bsd4ClauseUC),
+            "BSD-4-Clause-UC" => Ok(Self::Bsd4ClauseUc),
             "BSD-Protection" => Ok(Self::BsdProtection),
             "BSD-Source-Code" => Ok(Self::BsdSourceCode),
             "BSL-1.0" => Ok(Self::Bsl10),
@@ -56356,7 +56356,7 @@ impl ::core::str::FromStr for SPDXLicense {
             "CECILL-C" => Ok(Self::CecillC),
             "CNRI-Jython" => Ok(Self::CnriJython),
             "CNRI-Python" => Ok(Self::CnriPython),
-            "CNRI-Python-GPL-Compatible" => Ok(Self::CnriPythonGPLCompatible),
+            "CNRI-Python-GPL-Compatible" => Ok(Self::CnriPythonGplCompatible),
             "CPAL-1.0" => Ok(Self::Cpal10),
             "CPL-1.0" => Ok(Self::Cpl10),
             "CPOL-1.02" => Ok(Self::Cpol102),
@@ -56377,12 +56377,12 @@ impl ::core::str::FromStr for SPDXLicense {
             "EFL-2.0" => Ok(Self::Efl20),
             "EPL-1.0" => Ok(Self::Epl10),
             "EPL-2.0" => Ok(Self::Epl20),
-            "EUDatagrid" => Ok(Self::Eudatagrid),
+            "EUDatagrid" => Ok(Self::EuDatagrid),
             "EUPL-1.0" => Ok(Self::Eupl10),
             "EUPL-1.1" => Ok(Self::Eupl11),
             "EUPL-1.2" => Ok(Self::Eupl12),
             "Entessa" => Ok(Self::Entessa),
-            "ErlPL-1.1" => Ok(Self::ErlPL11),
+            "ErlPL-1.1" => Ok(Self::ErlPl11),
             "Eurosym" => Ok(Self::Eurosym),
             "FSFAP" => Ok(Self::Fsfap),
             "FSFUL" => Ok(Self::Fsful),
@@ -56397,7 +56397,7 @@ impl ::core::str::FromStr for SPDXLicense {
             "GFDL-1.2-or-later" => Ok(Self::Gfdl12OrLater),
             "GFDL-1.3-only" => Ok(Self::Gfdl13Only),
             "GFDL-1.3-or-later" => Ok(Self::Gfdl13OrLater),
-            "GL2PS" => Ok(Self::Gl2Ps),
+            "GL2PS" => Ok(Self::Gl2ps),
             "GPL-1.0-only" => Ok(Self::Gpl10Only),
             "GPL-1.0-or-later" => Ok(Self::Gpl10OrLater),
             "GPL-2.0-only" => Ok(Self::Gpl20Only),
@@ -56417,9 +56417,9 @@ impl ::core::str::FromStr for SPDXLicense {
             "ISC" => Ok(Self::Isc),
             "ImageMagick" => Ok(Self::ImageMagick),
             "Imlib2" => Ok(Self::Imlib2),
-            "Info-ZIP" => Ok(Self::InfoZIP),
+            "Info-ZIP" => Ok(Self::InfoZip),
             "Intel" => Ok(Self::Intel),
-            "Intel-ACPI" => Ok(Self::IntelACPI),
+            "Intel-ACPI" => Ok(Self::IntelAcpi),
             "Interbase-1.0" => Ok(Self::Interbase10),
             "JSON" => Ok(Self::Json),
             "JasPer-2.0" => Ok(Self::JasPer20),
@@ -56437,15 +56437,15 @@ impl ::core::str::FromStr for SPDXLicense {
             "LPPL-1.0" => Ok(Self::Lppl10),
             "LPPL-1.1" => Ok(Self::Lppl11),
             "LPPL-1.2" => Ok(Self::Lppl12),
-            "LPPL-1.3a" => Ok(Self::Lppl13A),
-            "LPPL-1.3c" => Ok(Self::Lppl13C),
-            "Latex2e" => Ok(Self::Latex2E),
+            "LPPL-1.3a" => Ok(Self::Lppl13a),
+            "LPPL-1.3c" => Ok(Self::Lppl13c),
+            "Latex2e" => Ok(Self::Latex2e),
             "Leptonica" => Ok(Self::Leptonica),
             "LiLiQ-P-1.1" => Ok(Self::LiLiQP11),
             "LiLiQ-R-1.1" => Ok(Self::LiLiQR11),
             "LiLiQ-Rplus-1.1" => Ok(Self::LiLiQRplus11),
             "Libpng" => Ok(Self::Libpng),
-            "Linux-OpenIB" => Ok(Self::LinuxOpenIB),
+            "Linux-OpenIB" => Ok(Self::LinuxOpenIb),
             "MIT" => Ok(Self::Mit),
             "MIT-0" => Ok(Self::Mit0),
             "MIT-CMU" => Ok(Self::MitCmu),
@@ -56461,7 +56461,7 @@ impl ::core::str::FromStr for SPDXLicense {
             "MS-RL" => Ok(Self::MsRl),
             "MTLL" => Ok(Self::Mtll),
             "MakeIndex" => Ok(Self::MakeIndex),
-            "MirOS" => Ok(Self::MirOS),
+            "MirOS" => Ok(Self::MirOs),
             "Motosoto" => Ok(Self::Motosoto),
             "Multics" => Ok(Self::Multics),
             "Mup" => Ok(Self::Mup),
@@ -56478,14 +56478,14 @@ impl ::core::str::FromStr for SPDXLicense {
             "NRL" => Ok(Self::Nrl),
             "NTP" => Ok(Self::Ntp),
             "Naumen" => Ok(Self::Naumen),
-            "Net-SNMP" => Ok(Self::NetSNMP),
-            "NetCDF" => Ok(Self::NetCDF),
+            "Net-SNMP" => Ok(Self::NetSnmp),
+            "NetCDF" => Ok(Self::NetCdf),
             "Newsletr" => Ok(Self::Newsletr),
             "Nokia" => Ok(Self::Nokia),
             "Noweb" => Ok(Self::Noweb),
             "OCCT-PL" => Ok(Self::OcctPl),
             "OCLC-2.0" => Ok(Self::Oclc20),
-            "ODbL-1.0" => Ok(Self::OdbL10),
+            "ODbL-1.0" => Ok(Self::ODbL10),
             "OFL-1.0" => Ok(Self::Ofl10),
             "OFL-1.1" => Ok(Self::Ofl11),
             "OGTSL" => Ok(Self::Ogtsl),
@@ -56513,16 +56513,16 @@ impl ::core::str::FromStr for SPDXLicense {
             "OSL-2.0" => Ok(Self::Osl20),
             "OSL-2.1" => Ok(Self::Osl21),
             "OSL-3.0" => Ok(Self::Osl30),
-            "OpenSSL" => Ok(Self::OpenSSL),
+            "OpenSSL" => Ok(Self::OpenSsl),
             "PDDL-1.0" => Ok(Self::Pddl10),
             "PHP-3.0" => Ok(Self::Php30),
             "PHP-3.01" => Ok(Self::Php301),
             "Plexus" => Ok(Self::Plexus),
-            "PostgreSQL" => Ok(Self::PostgreSQL),
+            "PostgreSQL" => Ok(Self::PostgreSql),
             "Python-2.0" => Ok(Self::Python20),
             "QPL-1.0" => Ok(Self::Qpl10),
             "Qhull" => Ok(Self::Qhull),
-            "RHeCos-1.1" => Ok(Self::RheCos11),
+            "RHeCos-1.1" => Ok(Self::RHeCos11),
             "RPL-1.1" => Ok(Self::Rpl11),
             "RPL-1.5" => Ok(Self::Rpl15),
             "RPSL-1.0" => Ok(Self::Rpsl10),
@@ -56544,34 +56544,34 @@ impl ::core::str::FromStr for SPDXLicense {
             "SWL" => Ok(Self::Swl),
             "Saxpath" => Ok(Self::Saxpath),
             "Sendmail" => Ok(Self::Sendmail),
-            "SimPL-2.0" => Ok(Self::SimPL20),
+            "SimPL-2.0" => Ok(Self::SimPl20),
             "Sleepycat" => Ok(Self::Sleepycat),
             "Spencer-86" => Ok(Self::Spencer86),
             "Spencer-94" => Ok(Self::Spencer94),
             "Spencer-99" => Ok(Self::Spencer99),
-            "SugarCRM-1.1.3" => Ok(Self::SugarCRM113),
+            "SugarCRM-1.1.3" => Ok(Self::SugarCrm113),
             "TCL" => Ok(Self::Tcl),
             "TCP-wrappers" => Ok(Self::TcpWrappers),
-            "TMate" => Ok(Self::Tmate),
+            "TMate" => Ok(Self::TMate),
             "TORQUE-1.1" => Ok(Self::Torque11),
             "TOSL" => Ok(Self::Tosl),
             "UPL-1.0" => Ok(Self::Upl10),
-            "Unicode-DFS-2015" => Ok(Self::UnicodeDFS2015),
-            "Unicode-DFS-2016" => Ok(Self::UnicodeDFS2016),
-            "Unicode-TOU" => Ok(Self::UnicodeTOU),
+            "Unicode-DFS-2015" => Ok(Self::UnicodeDfs2015),
+            "Unicode-DFS-2016" => Ok(Self::UnicodeDfs2016),
+            "Unicode-TOU" => Ok(Self::UnicodeTou),
             "Unlicense" => Ok(Self::Unlicense),
             "VOSTROM" => Ok(Self::Vostrom),
             "VSL-1.0" => Ok(Self::Vsl10),
             "Vim" => Ok(Self::Vim),
-            "W3C" => Ok(Self::W3C),
-            "W3C-19980720" => Ok(Self::W3C19980720),
-            "W3C-20150513" => Ok(Self::W3C20150513),
+            "W3C" => Ok(Self::W3c),
+            "W3C-19980720" => Ok(Self::W3c19980720),
+            "W3C-20150513" => Ok(Self::W3c20150513),
             "WTFPL" => Ok(Self::Wtfpl),
             "Watcom-1.0" => Ok(Self::Watcom10),
             "Wsuipa" => Ok(Self::Wsuipa),
             "X11" => Ok(Self::X11),
-            "XFree86-1.1" => Ok(Self::Xfree8611),
-            "XSkat" => Ok(Self::Xskat),
+            "XFree86-1.1" => Ok(Self::XFree8611),
+            "XSkat" => Ok(Self::XSkat),
             "Xerox" => Ok(Self::Xerox),
             "Xnet" => Ok(Self::Xnet),
             "YPL-1.0" => Ok(Self::Ypl10),
@@ -56589,10 +56589,10 @@ impl ::core::str::FromStr for SPDXLicense {
             "curl" => Ok(Self::Curl),
             "diffmark" => Ok(Self::Diffmark),
             "dvipdfm" => Ok(Self::Dvipdfm),
-            "eGenix" => Ok(Self::Egenix),
-            "gSOAP-1.3b" => Ok(Self::Gsoap13B),
+            "eGenix" => Ok(Self::EGenix),
+            "gSOAP-1.3b" => Ok(Self::GSoap13b),
             "gnuplot" => Ok(Self::Gnuplot),
-            "iMatix" => Ok(Self::Imatix),
+            "iMatix" => Ok(Self::IMatix),
             "libtiff" => Ok(Self::Libtiff),
             "mpich2" => Ok(Self::Mpich2),
             "not-open-source" => Ok(Self::NotOpenSource),
@@ -56608,7 +56608,7 @@ impl ::core::str::FromStr for SPDXLicense {
 impl AsRef<str> for SPDXLicense {
     fn as_ref(&self) -> &str {
         match self {
-            Self::N0Bsd => "0BSD",
+            Self::N0bsd => "0BSD",
             Self::Aal => "AAL",
             Self::Adsl => "ADSL",
             Self::Afl11 => "AFL-1.1",
@@ -56644,20 +56644,20 @@ impl AsRef<str> for SPDXLicense {
             Self::Artistic20 => "Artistic-2.0",
             Self::Bsd1Clause => "BSD-1-Clause",
             Self::Bsd2Clause => "BSD-2-Clause",
-            Self::Bsd2ClauseFreeBSD => "BSD-2-Clause-FreeBSD",
-            Self::Bsd2ClauseNetBSD => "BSD-2-Clause-NetBSD",
+            Self::Bsd2ClauseFreeBsd => "BSD-2-Clause-FreeBSD",
+            Self::Bsd2ClauseNetBsd => "BSD-2-Clause-NetBSD",
             Self::Bsd2ClausePatent => "BSD-2-Clause-Patent",
             Self::Bsd3Clause => "BSD-3-Clause",
             Self::Bsd3ClauseAttribution => "BSD-3-Clause-Attribution",
             Self::Bsd3ClauseClear => "BSD-3-Clause-Clear",
-            Self::Bsd3ClauseLBNL => "BSD-3-Clause-LBNL",
+            Self::Bsd3ClauseLbnl => "BSD-3-Clause-LBNL",
             Self::Bsd3ClauseNoNuclearLicense => "BSD-3-Clause-No-Nuclear-License",
             Self::Bsd3ClauseNoNuclearLicense2014 => {
                 "BSD-3-Clause-No-Nuclear-License-2014"
             }
             Self::Bsd3ClauseNoNuclearWarranty => "BSD-3-Clause-No-Nuclear-Warranty",
             Self::Bsd4Clause => "BSD-4-Clause",
-            Self::Bsd4ClauseUC => "BSD-4-Clause-UC",
+            Self::Bsd4ClauseUc => "BSD-4-Clause-UC",
             Self::BsdProtection => "BSD-Protection",
             Self::BsdSourceCode => "BSD-Source-Code",
             Self::Bsl10 => "BSL-1.0",
@@ -56711,7 +56711,7 @@ impl AsRef<str> for SPDXLicense {
             Self::CecillC => "CECILL-C",
             Self::CnriJython => "CNRI-Jython",
             Self::CnriPython => "CNRI-Python",
-            Self::CnriPythonGPLCompatible => "CNRI-Python-GPL-Compatible",
+            Self::CnriPythonGplCompatible => "CNRI-Python-GPL-Compatible",
             Self::Cpal10 => "CPAL-1.0",
             Self::Cpl10 => "CPL-1.0",
             Self::Cpol102 => "CPOL-1.02",
@@ -56732,12 +56732,12 @@ impl AsRef<str> for SPDXLicense {
             Self::Efl20 => "EFL-2.0",
             Self::Epl10 => "EPL-1.0",
             Self::Epl20 => "EPL-2.0",
-            Self::Eudatagrid => "EUDatagrid",
+            Self::EuDatagrid => "EUDatagrid",
             Self::Eupl10 => "EUPL-1.0",
             Self::Eupl11 => "EUPL-1.1",
             Self::Eupl12 => "EUPL-1.2",
             Self::Entessa => "Entessa",
-            Self::ErlPL11 => "ErlPL-1.1",
+            Self::ErlPl11 => "ErlPL-1.1",
             Self::Eurosym => "Eurosym",
             Self::Fsfap => "FSFAP",
             Self::Fsful => "FSFUL",
@@ -56752,7 +56752,7 @@ impl AsRef<str> for SPDXLicense {
             Self::Gfdl12OrLater => "GFDL-1.2-or-later",
             Self::Gfdl13Only => "GFDL-1.3-only",
             Self::Gfdl13OrLater => "GFDL-1.3-or-later",
-            Self::Gl2Ps => "GL2PS",
+            Self::Gl2ps => "GL2PS",
             Self::Gpl10Only => "GPL-1.0-only",
             Self::Gpl10OrLater => "GPL-1.0-or-later",
             Self::Gpl20Only => "GPL-2.0-only",
@@ -56772,9 +56772,9 @@ impl AsRef<str> for SPDXLicense {
             Self::Isc => "ISC",
             Self::ImageMagick => "ImageMagick",
             Self::Imlib2 => "Imlib2",
-            Self::InfoZIP => "Info-ZIP",
+            Self::InfoZip => "Info-ZIP",
             Self::Intel => "Intel",
-            Self::IntelACPI => "Intel-ACPI",
+            Self::IntelAcpi => "Intel-ACPI",
             Self::Interbase10 => "Interbase-1.0",
             Self::Json => "JSON",
             Self::JasPer20 => "JasPer-2.0",
@@ -56792,15 +56792,15 @@ impl AsRef<str> for SPDXLicense {
             Self::Lppl10 => "LPPL-1.0",
             Self::Lppl11 => "LPPL-1.1",
             Self::Lppl12 => "LPPL-1.2",
-            Self::Lppl13A => "LPPL-1.3a",
-            Self::Lppl13C => "LPPL-1.3c",
-            Self::Latex2E => "Latex2e",
+            Self::Lppl13a => "LPPL-1.3a",
+            Self::Lppl13c => "LPPL-1.3c",
+            Self::Latex2e => "Latex2e",
             Self::Leptonica => "Leptonica",
             Self::LiLiQP11 => "LiLiQ-P-1.1",
             Self::LiLiQR11 => "LiLiQ-R-1.1",
             Self::LiLiQRplus11 => "LiLiQ-Rplus-1.1",
             Self::Libpng => "Libpng",
-            Self::LinuxOpenIB => "Linux-OpenIB",
+            Self::LinuxOpenIb => "Linux-OpenIB",
             Self::Mit => "MIT",
             Self::Mit0 => "MIT-0",
             Self::MitCmu => "MIT-CMU",
@@ -56816,7 +56816,7 @@ impl AsRef<str> for SPDXLicense {
             Self::MsRl => "MS-RL",
             Self::Mtll => "MTLL",
             Self::MakeIndex => "MakeIndex",
-            Self::MirOS => "MirOS",
+            Self::MirOs => "MirOS",
             Self::Motosoto => "Motosoto",
             Self::Multics => "Multics",
             Self::Mup => "Mup",
@@ -56833,14 +56833,14 @@ impl AsRef<str> for SPDXLicense {
             Self::Nrl => "NRL",
             Self::Ntp => "NTP",
             Self::Naumen => "Naumen",
-            Self::NetSNMP => "Net-SNMP",
-            Self::NetCDF => "NetCDF",
+            Self::NetSnmp => "Net-SNMP",
+            Self::NetCdf => "NetCDF",
             Self::Newsletr => "Newsletr",
             Self::Nokia => "Nokia",
             Self::Noweb => "Noweb",
             Self::OcctPl => "OCCT-PL",
             Self::Oclc20 => "OCLC-2.0",
-            Self::OdbL10 => "ODbL-1.0",
+            Self::ODbL10 => "ODbL-1.0",
             Self::Ofl10 => "OFL-1.0",
             Self::Ofl11 => "OFL-1.1",
             Self::Ogtsl => "OGTSL",
@@ -56868,16 +56868,16 @@ impl AsRef<str> for SPDXLicense {
             Self::Osl20 => "OSL-2.0",
             Self::Osl21 => "OSL-2.1",
             Self::Osl30 => "OSL-3.0",
-            Self::OpenSSL => "OpenSSL",
+            Self::OpenSsl => "OpenSSL",
             Self::Pddl10 => "PDDL-1.0",
             Self::Php30 => "PHP-3.0",
             Self::Php301 => "PHP-3.01",
             Self::Plexus => "Plexus",
-            Self::PostgreSQL => "PostgreSQL",
+            Self::PostgreSql => "PostgreSQL",
             Self::Python20 => "Python-2.0",
             Self::Qpl10 => "QPL-1.0",
             Self::Qhull => "Qhull",
-            Self::RheCos11 => "RHeCos-1.1",
+            Self::RHeCos11 => "RHeCos-1.1",
             Self::Rpl11 => "RPL-1.1",
             Self::Rpl15 => "RPL-1.5",
             Self::Rpsl10 => "RPSL-1.0",
@@ -56899,34 +56899,34 @@ impl AsRef<str> for SPDXLicense {
             Self::Swl => "SWL",
             Self::Saxpath => "Saxpath",
             Self::Sendmail => "Sendmail",
-            Self::SimPL20 => "SimPL-2.0",
+            Self::SimPl20 => "SimPL-2.0",
             Self::Sleepycat => "Sleepycat",
             Self::Spencer86 => "Spencer-86",
             Self::Spencer94 => "Spencer-94",
             Self::Spencer99 => "Spencer-99",
-            Self::SugarCRM113 => "SugarCRM-1.1.3",
+            Self::SugarCrm113 => "SugarCRM-1.1.3",
             Self::Tcl => "TCL",
             Self::TcpWrappers => "TCP-wrappers",
-            Self::Tmate => "TMate",
+            Self::TMate => "TMate",
             Self::Torque11 => "TORQUE-1.1",
             Self::Tosl => "TOSL",
             Self::Upl10 => "UPL-1.0",
-            Self::UnicodeDFS2015 => "Unicode-DFS-2015",
-            Self::UnicodeDFS2016 => "Unicode-DFS-2016",
-            Self::UnicodeTOU => "Unicode-TOU",
+            Self::UnicodeDfs2015 => "Unicode-DFS-2015",
+            Self::UnicodeDfs2016 => "Unicode-DFS-2016",
+            Self::UnicodeTou => "Unicode-TOU",
             Self::Unlicense => "Unlicense",
             Self::Vostrom => "VOSTROM",
             Self::Vsl10 => "VSL-1.0",
             Self::Vim => "Vim",
-            Self::W3C => "W3C",
-            Self::W3C19980720 => "W3C-19980720",
-            Self::W3C20150513 => "W3C-20150513",
+            Self::W3c => "W3C",
+            Self::W3c19980720 => "W3C-19980720",
+            Self::W3c20150513 => "W3C-20150513",
             Self::Wtfpl => "WTFPL",
             Self::Watcom10 => "Watcom-1.0",
             Self::Wsuipa => "Wsuipa",
             Self::X11 => "X11",
-            Self::Xfree8611 => "XFree86-1.1",
-            Self::Xskat => "XSkat",
+            Self::XFree8611 => "XFree86-1.1",
+            Self::XSkat => "XSkat",
             Self::Xerox => "Xerox",
             Self::Xnet => "Xnet",
             Self::Ypl10 => "YPL-1.0",
@@ -56944,10 +56944,10 @@ impl AsRef<str> for SPDXLicense {
             Self::Curl => "curl",
             Self::Diffmark => "diffmark",
             Self::Dvipdfm => "dvipdfm",
-            Self::Egenix => "eGenix",
-            Self::Gsoap13B => "gSOAP-1.3b",
+            Self::EGenix => "eGenix",
+            Self::GSoap13b => "gSOAP-1.3b",
             Self::Gnuplot => "gnuplot",
-            Self::Imatix => "iMatix",
+            Self::IMatix => "iMatix",
             Self::Libtiff => "libtiff",
             Self::Mpich2 => "mpich2",
             Self::NotOpenSource => "not-open-source",
@@ -59442,7 +59442,7 @@ Wilcoxon signed-rank test. Used for Wilcoxon signed-rank test, no additional ele
     /** **zTest**
 
 z-test. Used for z-test, no additional elements needed */
-    Ztest,
+    ZTest,
     /** **zeroCellConstant**
 
 Zero-cell adjustment with constant. Zero-cell adjustment done by adding a constant to all cells of affected studies, paired with "value" to define the constant */
@@ -59540,7 +59540,7 @@ impl ::core::str::FromStr for StatisticModelCode {
             "twoTailedTest" => Ok(Self::TwoTailedTest),
             "wilcoxonRankSumTest" => Ok(Self::WilcoxonRankSumTest),
             "wilcoxonSignedRankTest" => Ok(Self::WilcoxonSignedRankTest),
-            "zTest" => Ok(Self::Ztest),
+            "zTest" => Ok(Self::ZTest),
             "zeroCellConstant" => Ok(Self::ZeroCellConstant),
             "zeroCellContinuityCorrection" => Ok(Self::ZeroCellContinuityCorrection),
             _ => Err(format!("Unknown value: {s}")),
@@ -59628,7 +59628,7 @@ impl AsRef<str> for StatisticModelCode {
             Self::TwoTailedTest => "twoTailedTest",
             Self::WilcoxonRankSumTest => "wilcoxonRankSumTest",
             Self::WilcoxonSignedRankTest => "wilcoxonSignedRankTest",
-            Self::Ztest => "zTest",
+            Self::ZTest => "zTest",
             Self::ZeroCellConstant => "zeroCellConstant",
             Self::ZeroCellContinuityCorrection => "zeroCellContinuityCorrection",
         }
@@ -62787,7 +62787,7 @@ SMILES. */
     /** **mmCIF**
 
 mmCIF. */
-    MmCIF,
+    MmCif,
 }
 impl ::core::str::FromStr for SubstanceRepresentationFormat {
     type Err = String;
@@ -62803,7 +62803,7 @@ impl ::core::str::FromStr for SubstanceRepresentationFormat {
             "PDB" => Ok(Self::Pdb),
             "SDF" => Ok(Self::Sdf),
             "SMILES" => Ok(Self::Smiles),
-            "mmCIF" => Ok(Self::MmCIF),
+            "mmCIF" => Ok(Self::MmCif),
             _ => Err(format!("Unknown value: {s}")),
         }
     }
@@ -62817,7 +62817,7 @@ impl AsRef<str> for SubstanceRepresentationFormat {
             Self::Pdb => "PDB",
             Self::Sdf => "SDF",
             Self::Smiles => "SMILES",
-            Self::MmCIF => "mmCIF",
+            Self::MmCif => "mmCIF",
         }
     }
 }
@@ -64574,11 +64574,11 @@ classifcation of results. An approach describing a body of evidence by categoric
     /** **combined-NMA**
 
 combined direct plus indirect network meta-analysis. An composite meta-analysis derived from direct comparisons and indirect comparisons in a network meta-analysis. */
-    CombinedNMA,
+    CombinedNma,
     /** **indirect-NMA**
 
 indirect network meta-analysis. An indirect meta-analysis derived from 2 or more direct comparisons in a network meta-analysis. */
-    IndirectNMA,
+    IndirectNma,
     /** **range**
 
 range of results. A range of results across a body of evidence. */
@@ -64586,7 +64586,7 @@ range of results. A range of results across a body of evidence. */
     /** **std-MA**
 
 summary data meta-analysis. A meta-analysis of the summary data of estimates from individual studies or data sets. */
-    StdMA,
+    StdMa,
 }
 impl ::core::str::FromStr for SynthesisType {
     type Err = String;
@@ -64599,10 +64599,10 @@ impl ::core::str::FromStr for SynthesisType {
             "IPD-MA" => Ok(Self::IpdMa),
             "NotApplicable" => Ok(Self::NotApplicable),
             "classification" => Ok(Self::Classification),
-            "combined-NMA" => Ok(Self::CombinedNMA),
-            "indirect-NMA" => Ok(Self::IndirectNMA),
+            "combined-NMA" => Ok(Self::CombinedNma),
+            "indirect-NMA" => Ok(Self::IndirectNma),
             "range" => Ok(Self::Range),
-            "std-MA" => Ok(Self::StdMA),
+            "std-MA" => Ok(Self::StdMa),
             _ => Err(format!("Unknown value: {s}")),
         }
     }
@@ -64613,10 +64613,10 @@ impl AsRef<str> for SynthesisType {
             Self::IpdMa => "IPD-MA",
             Self::NotApplicable => "NotApplicable",
             Self::Classification => "classification",
-            Self::CombinedNMA => "combined-NMA",
-            Self::IndirectNMA => "indirect-NMA",
+            Self::CombinedNma => "combined-NMA",
+            Self::IndirectNma => "indirect-NMA",
             Self::Range => "range",
-            Self::StdMA => "std-MA",
+            Self::StdMa => "std-MA",
         }
     }
 }

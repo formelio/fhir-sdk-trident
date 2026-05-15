@@ -1,9 +1,8 @@
 //! FHIR paging functionality, e.g. for search results.
 
-use std::{any::type_name, fmt::Debug, marker::PhantomData};
-
-use futures::{Stream, StreamExt, TryStreamExt, stream};
-use reqwest::{StatusCode, Url, header::HeaderValue};
+use ::futures::{Stream, StreamExt, TryStreamExt, stream};
+use ::reqwest::{StatusCode, Url, header::HeaderValue};
+use ::std::{any::type_name, fmt::Debug, marker::PhantomData};
 
 use super::{Client, Error};
 use crate::{

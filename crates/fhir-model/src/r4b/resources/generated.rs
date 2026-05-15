@@ -69769,12 +69769,12 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "lethalDose50")]
-    pub lethal_dose_50: Vec<Option<Quantity>>,
+    pub lethal_dose50: Vec<Option<Quantity>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_lethalDose50")]
     #[cfg_attr(feature = "builders", builder(default))]
-    pub lethal_dose_50_ext: Vec<Option<FieldExtension>>,
+    pub lethal_dose50_ext: Vec<Option<FieldExtension>>,
     /** **Time required for concentration in the body to decrease by half**
 
  The time required for any specified property (e.g., the concentration of a substance in the body) to decrease by half.

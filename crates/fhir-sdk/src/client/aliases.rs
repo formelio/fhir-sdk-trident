@@ -1,7 +1,7 @@
 //! Version aliases for easier use of version specific types. Also for
 //! compatibility with the previous implementation.
 
-use fhir_model::for_all_versions;
+use ::fhir_model::for_all_versions;
 
 /// Implement type aliases for search parameters for all versions.
 macro_rules! impl_search_param_aliases {

@@ -13,11 +13,11 @@ pub mod extensions;
 mod utils;
 pub mod version;
 
-pub use fhir_model::*;
+pub use ::fhir_model::*;
 #[cfg(feature = "client")]
-pub use futures::stream::{Stream, StreamExt, TryStream, TryStreamExt};
+pub use ::futures::stream::{Stream, StreamExt, TryStream, TryStreamExt};
 #[cfg(feature = "client")]
-pub use reqwest::{
+pub use ::reqwest::{
 	Body, Client as HttpClient, Request, RequestBuilder, Response, StatusCode, Url,
 	header::{self, HeaderMap, HeaderValue},
 };

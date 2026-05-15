@@ -1,9 +1,8 @@
 //! FHIR Time, Date, DateTime and Instant types.
 
-use std::{cmp::Ordering, str::FromStr};
-
-use serde::{Deserialize, Serialize};
-use time::{OffsetDateTime, error::Parse, format_description::well_known::Rfc3339};
+use ::serde::{Deserialize, Serialize};
+use ::std::{cmp::Ordering, str::FromStr};
+use ::time::{OffsetDateTime, error::Parse, format_description::well_known::Rfc3339};
 
 use crate::error::DateFormatError;
 

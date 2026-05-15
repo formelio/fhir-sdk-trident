@@ -1,8 +1,7 @@
 //! Common test functions.
 
-use std::sync::LazyLock;
-
-use tokio::{runtime::Runtime, sync::OnceCell};
+use ::std::sync::LazyLock;
+use ::tokio::{runtime::Runtime, sync::OnceCell};
 
 /// Test-global runtime to be stable across multiple tests using the same client
 /// and runtime.

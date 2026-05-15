@@ -1,8 +1,7 @@
 //! Builder implementation for the client.
 
-use std::marker::PhantomData;
-
-use reqwest::Url;
+use ::reqwest::Url;
+use ::std::marker::PhantomData;
 
 use super::{Client, Error, LoginManager, RequestSettings, auth::AuthCallback};
 use crate::version::{DefaultVersion, FhirVersion};

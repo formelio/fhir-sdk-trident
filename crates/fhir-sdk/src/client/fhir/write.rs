@@ -1,10 +1,9 @@
 //! Home of the ResourceWrite trait.
 
-use std::future::Future;
-
-use fhir_model::for_all_versions;
-use reqwest::StatusCode;
-use serde::Serialize;
+use ::fhir_model::for_all_versions;
+use ::reqwest::StatusCode;
+use ::serde::Serialize;
+use ::std::future::Future;
 
 use super::{Client, Error};
 use crate::{

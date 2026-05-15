@@ -1,11 +1,11 @@
 //! Implementation of building batch/transaction requests and processing the
 //! response.
 
-use reqwest::{
+use ::reqwest::{
 	StatusCode,
 	header::{self, HeaderValue},
 };
-use uuid::Uuid;
+use ::uuid::Uuid;
 
 use super::{Client, Error};
 use crate::{

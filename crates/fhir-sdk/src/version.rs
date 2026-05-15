@@ -10,13 +10,12 @@
 	)
 )]
 
-use std::{
+use ::fhir_model::for_all_versions;
+use ::serde::{Serialize, de::DeserializeOwned};
+use ::std::{
 	fmt::{Debug, Display},
 	str::FromStr,
 };
-
-use fhir_model::for_all_versions;
-use serde::{Serialize, de::DeserializeOwned};
 
 use crate::{
 	extensions::{BundleEntryExt, BundleExt, GenericResource, ParametersExt, ReferenceExt},

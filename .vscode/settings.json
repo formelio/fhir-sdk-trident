@@ -1,4 +1,13 @@
 {
+	"rust-analyzer.check.overrideCommand": [
+		"cargo",
+		"clippy",
+		"--workspace",
+		"--all-targets",
+		"--features",
+		"full",
+		"--message-format=json"
+	],
 	"rust-analyzer.cargo.features": [
 		"stu3",
 		"r4b",

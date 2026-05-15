@@ -1,7 +1,7 @@
 //! Run code generation.
 #![allow(clippy::print_stdout)]
 
-use anyhow::Result;
+use ::neuer_error::Result;
 
 fn main() -> Result<()> {
 	println!("Generating STU3 models..");

@@ -1,6 +1,6 @@
 //! Traits for all resources.
 
-use fhir_model::for_all_versions;
+use ::fhir_model::for_all_versions;
 
 use crate::version::{FhirVersion, fhir_version};
 

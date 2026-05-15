@@ -82,7 +82,7 @@ dependencies = ["install-rust-toolchain"]
 [tasks.clippy-all]
 install_crate = false
 command = "cargo"
-args = ["clippy", "--workspace", "--all-targets", "--all-features", "--", "-D", "warnings"]
+args = ["clippy", "--workspace", "--all-targets", "--features", "full", "--", "-D", "warnings"]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.clippy]
@@ -104,14 +104,14 @@ dependencies = [
 description = "Runs all tests via cargo test."
 install_crate = false
 command = "cargo"
-args = ["test", "--workspace", "--all-features"]
+args = ["test", "--workspace", "--features", "full"]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.test-nextest]
 description = "Runs all tests via nextest (installs nextest if necessary)."
 install_crate = true
 command = "cargo"
-args = ["nextest", "run", "--workspace", "--all-features"]
+args = ["nextest", "run", "--workspace", "--features", "full"]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.test-docs]

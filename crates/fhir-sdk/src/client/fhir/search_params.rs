@@ -1,6 +1,6 @@
 //! Client search implementation.
 
-use std::marker::PhantomData;
+use ::std::marker::PhantomData;
 
 use super::super::{misc::escape_search_value, search::SearchParameter};
 use crate::version::FhirVersion;

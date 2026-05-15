@@ -1,15 +1,13 @@
 #![allow(clippy::unwrap_used, clippy::indexing_slicing, reason = "Tests")]
 
-use std::{
+use ::reqwest::{Method, header::HeaderValue};
+use ::serde_json::json;
+use ::std::{
 	sync::atomic::{AtomicUsize, Ordering},
 	time::Duration,
 };
-
 use ::tokio::sync::OnceCell;
-use header::HeaderValue;
-use reqwest::Method;
-use serde_json::json;
-use wiremock::{Mock, MockServer, ResponseTemplate, matchers};
+use ::wiremock::{Mock, MockServer, ResponseTemplate, matchers};
 
 use super::*;
 
@@ -64,7 +62,7 @@ async fn mock_custom_request() -> MockServer {
 }
 
 #[tokio::test]
-async fn send_custom_request_features() -> anyhow::Result<()> {
+async fn send_custom_request_features() -> neuer_error::Result<()> {
 	setup_logging().await;
 	let mocks = mock_custom_request().await;
 
@@ -82,7 +80,7 @@ async fn send_custom_request_features() -> anyhow::Result<()> {
 			let counter = counter_for_closure.clone();
 			async move {
 				counter.fetch_add(1, Ordering::Relaxed);
-				anyhow::Ok(HeaderValue::from_static("Bearer <token>"))
+				neuer_error::Ok(HeaderValue::from_static("Bearer <token>"))
 			}
 		})
 		.allow_origin_mismatch()
@@ -124,7 +122,7 @@ async fn mock_version_mismatch() -> MockServer {
 }
 
 #[tokio::test]
-async fn check_major_fhir_version() -> anyhow::Result<()> {
+async fn check_major_fhir_version() -> neuer_error::Result<()> {
 	setup_logging().await;
 	let mocks = mock_version_mismatch().await;
 
@@ -148,7 +146,7 @@ async fn check_major_fhir_version() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-async fn check_url_origin() -> anyhow::Result<()> {
+async fn check_url_origin() -> neuer_error::Result<()> {
 	setup_logging().await;
 	let mocks = mock_version_mismatch().await;
 
@@ -209,14 +207,14 @@ async fn mock_x_correlation_id() -> MockServer {
 }
 
 #[tokio::test]
-async fn use_correlation_id() -> anyhow::Result<()> {
+async fn use_correlation_id() -> neuer_error::Result<()> {
 	setup_logging().await;
 	let mocks = mock_x_correlation_id().await;
 
 	let client = <Client>::builder()
 		.base_url(Url::parse(&mocks.uri())?)
 		.auth_callback(move |_http: reqwest::Client| {
-			std::future::ready(anyhow::Ok(HeaderValue::from_static("Bearer <mock>")))
+			std::future::ready(neuer_error::Ok(HeaderValue::from_static("Bearer <mock>")))
 		})
 		.build()?;
 

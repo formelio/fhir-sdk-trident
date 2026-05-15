@@ -66725,12 +66725,12 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "imageRegion2D")]
-    pub image_region_2d: Vec<Option<ImagingSelectionInstanceImageRegion2D>>,
+    pub image_region2_d: Vec<Option<ImagingSelectionInstanceImageRegion2D>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_imageRegion2D")]
     #[cfg_attr(feature = "builders", builder(default))]
-    pub image_region_2d_ext: Vec<Option<FieldExtension>>,
+    pub image_region2_d_ext: Vec<Option<FieldExtension>>,
     /** **A specific 3D region in a DICOM frame of reference**
 
  Each imaging selection might includes a 3D image region, specified by a region type and a set of 3D coordinates.
@@ -66739,12 +66739,12 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "imageRegion3D")]
-    pub image_region_3d: Vec<Option<ImagingSelectionInstanceImageRegion3D>>,
+    pub image_region3_d: Vec<Option<ImagingSelectionInstanceImageRegion3D>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_imageRegion3D")]
     #[cfg_attr(feature = "builders", builder(default))]
-    pub image_region_3d_ext: Vec<Option<FieldExtension>>,
+    pub image_region3_d_ext: Vec<Option<FieldExtension>>,
 }
 #[cfg(feature = "builders")]
 impl ImagingSelectionInstance {

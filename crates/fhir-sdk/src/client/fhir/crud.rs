@@ -1,11 +1,11 @@
 //! FHIR CRUD API interactions.
 
-use fhir_model::{ParsedReference, WrongResourceType};
-use reqwest::{
+use ::fhir_model::{ParsedReference, WrongResourceType};
+use ::reqwest::{
 	StatusCode, Url,
 	header::{self, HeaderValue},
 };
-use serde::{Serialize, de::DeserializeOwned};
+use ::serde::{Serialize, de::DeserializeOwned};
 
 use super::{
 	Client, Error, SearchParameters, misc,

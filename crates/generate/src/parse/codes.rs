@@ -1,6 +1,6 @@
 //! Codes parsing from CodeSystems.
 
-use fhir_model::{r4b, r5, stu3};
+use ::fhir_model::{r4b, r5, stu3};
 
 use crate::model::codes::{Code, CodeItem};
 

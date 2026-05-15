@@ -11,10 +11,7 @@
 
 mod common;
 
-use std::str::FromStr;
-
-use anyhow::Result;
-use fhir_sdk::{
+use ::fhir_sdk::{
 	Date,
 	client::{Client, DateSearch, ResourceWrite, SearchParameters, TokenSearch},
 	r4b::{
@@ -28,10 +25,12 @@ use fhir_sdk::{
 	},
 	version::FhirR4B,
 };
-use futures::TryStreamExt;
-use reqwest::header::HeaderValue;
-use serde_json::json;
-use tokio::sync::OnceCell;
+use ::futures::TryStreamExt;
+use ::neuer_error::{NeuErr, Result};
+use ::reqwest::header::HeaderValue;
+use ::serde_json::json;
+use ::std::str::FromStr;
+use ::tokio::sync::OnceCell;
 
 fn extract_json_field(json_body: serde_json::Value, field: &str) -> Option<String> {
 	let code = json_body.as_object()?.get(field)?.as_str()?;
@@ -56,7 +55,7 @@ async fn medplum_auth(client: reqwest::Client) -> Result<HeaderValue> {
 		.await?
 		.error_for_status()?;
 	let login_code = extract_json_field(response.json().await?, "code")
-		.ok_or_else(|| anyhow::format_err!("No code in login response"))?;
+		.ok_or_else(|| NeuErr::new("No code in login response"))?;
 
 	let token_url = "http://localhost:8080/oauth2/token";
 	let response = client
@@ -70,7 +69,7 @@ async fn medplum_auth(client: reqwest::Client) -> Result<HeaderValue> {
 		.await?
 		.error_for_status()?;
 	let access_token = extract_json_field(response.json().await?, "access_token")
-		.ok_or_else(|| anyhow::format_err!("No access_token in login response"))?;
+		.ok_or_else(|| NeuErr::new("No access_token in login response"))?;
 
 	Ok(format!("Bearer {access_token}").parse()?)
 }
@@ -89,7 +88,7 @@ async fn client() -> Result<Client<FhirR4B>> {
 				)
 				.auth_callback(medplum_auth)
 				.build()?;
-			anyhow::Ok(client)
+			neuer_error::Ok(client)
 		})
 		.await?;
 	Ok(client.clone())

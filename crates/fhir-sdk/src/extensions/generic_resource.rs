@@ -1,6 +1,6 @@
 //! Extensions on generic resource enum.
 
-use fhir_model::for_all_versions;
+use ::fhir_model::for_all_versions;
 
 /// Extended/shared functionality for generic resource enums. Only implemented if "builders" feature
 /// is active.

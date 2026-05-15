@@ -1,9 +1,8 @@
 //! HTTP Request implementation.
 
-use std::time::Duration;
-
-use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
-use tokio_retry::{
+use ::reqwest::header::{HeaderMap, HeaderName, HeaderValue};
+use ::std::time::Duration;
+use ::tokio_retry::{
 	RetryIf,
 	strategy::{ExponentialBackoff, FixedInterval},
 };

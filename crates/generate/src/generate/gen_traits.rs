@@ -1,10 +1,9 @@
 //! Generate traits for base resource types.
 
-use std::collections::HashMap;
-
-use anyhow::{Result, anyhow};
-use proc_macro2::{Ident, TokenStream};
-use quote::{format_ident, quote};
+use ::neuer_error::{ConvertOption, Result};
+use ::proc_macro2::{Ident, TokenStream};
+use ::quote::{format_ident, quote};
+use ::std::collections::HashMap;
 
 use super::{
 	comments::sanitize,
@@ -26,7 +25,7 @@ pub fn generate_base_resource(
 		.filter(|ty| ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::Resource)
 		.find(|ty| &ty.name == "Resource")
-		.ok_or(anyhow!("Could not find base Resource definition"))?;
+		.context("Could not find base Resource definition")?;
 	let (field_names, field_types) =
 		get_field_names_and_types(&resource.elements.fields, implemented_codes);
 
@@ -85,7 +84,7 @@ pub fn generate_domain_resource(
 		.filter(|ty| ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::Resource)
 		.find(|ty| &ty.name == "DomainResource")
-		.ok_or(anyhow!("Could not find DomainResource definition"))?;
+		.context("Could not find DomainResource definition")?;
 	let (field_names, field_types) =
 		get_field_names_and_types(&resource.elements.fields, implemented_codes);
 

@@ -1,11 +1,10 @@
 //! Comparison of JSON objects to be similar under the FHIR perspective.
 
-use std::collections::HashSet;
-
-use assert_json_diff::{CompareMode, Config, NumericMode, assert_json_matches};
-use base64::{Engine, prelude::BASE64_STANDARD};
-use serde_json::{Map, Value};
-use time::{OffsetDateTime, format_description::well_known::Rfc3339};
+use ::assert_json_diff::{CompareMode, Config, NumericMode, assert_json_matches};
+use ::base64::{Engine, prelude::BASE64_STANDARD};
+use ::serde_json::{Map, Value};
+use ::std::collections::HashSet;
+use ::time::{OffsetDateTime, format_description::well_known::Rfc3339};
 
 /// Assert two JSON values to be similar under the FHIR perspective.
 pub fn assert_fhir_json_equal(a: &Value, b: &Value) {

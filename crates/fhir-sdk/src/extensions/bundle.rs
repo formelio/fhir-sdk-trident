@@ -1,12 +1,11 @@
 //! Generalized functionality of `Bundle`s.
 
-use std::{
+use ::fhir_model::for_all_versions;
+use ::serde::{Serialize, de::DeserializeOwned};
+use ::std::{
 	fmt::{Debug, Display},
 	str::FromStr,
 };
-
-use fhir_model::for_all_versions;
-use serde::{Serialize, de::DeserializeOwned};
 
 use super::{GenericResource, SearchEntryModeExt};
 

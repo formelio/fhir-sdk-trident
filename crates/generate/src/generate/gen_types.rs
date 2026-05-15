@@ -1,11 +1,10 @@
 //! FHIR types generation.
 
-use std::collections::HashMap;
-
-use anyhow::Result;
-use inflector::Inflector;
-use proc_macro2::{Ident, TokenStream};
-use quote::{format_ident, quote};
+use ::heck::ToPascalCase;
+use ::neuer_error::Result;
+use ::proc_macro2::{Ident, TokenStream};
+use ::quote::{format_ident, quote};
+use ::std::collections::HashMap;
 
 use super::{comments::sanitize, map_field_ident, map_type};
 use crate::model::{

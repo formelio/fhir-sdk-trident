@@ -1,7 +1,7 @@
 //! Miscellaneous helpers.
 
+use ::reqwest::header::{self, HeaderMap, HeaderValue};
 use ::uuid::Uuid;
-use reqwest::header::{self, HeaderMap, HeaderValue};
 
 use super::Error;
 

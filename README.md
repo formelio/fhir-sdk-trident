@@ -127,7 +127,7 @@ use fhir_sdk::{HttpClient, HeaderValue};
 
 /// Gets called whenever there is an UNAUTHORIZED response.
 /// Retries the response with the new Authorization header.
-async fn my_auth_callback(client: HttpClient) -> Result<HeaderValue, anyhow::Error> {
+async fn my_auth_callback(client: HttpClient) -> neuer_error::Result<HeaderValue> {
     let _response = client.get("my-url").send().await?;
     Ok(HeaderValue::from_static("Bearer <token>"))
 }
@@ -138,7 +138,7 @@ struct MyLogin {
 }
 
 impl LoginManager for MyLogin {
-    type Error = anyhow::Error;
+    type Error = neuer_error::NeuErr;
     
     async fn authenticate(&mut self, client: HttpClient) -> Result<HeaderValue, Self::Error> {
         if self.valid.elapsed().as_secs() > 360 {
@@ -159,7 +159,7 @@ async fn main() -> Result<(), Error> {
         // Register struct with state. Overwrites previous callback.
         .auth_callback(MyLogin { valid: std::time::Instant::now() })
         // Register async closure. Overwrites previous callback.
-        .auth_callback(|_client: HttpClient| async move { anyhow::Ok(HeaderValue::from_static("hi")) })
+        .auth_callback(|_client: HttpClient| async move { neuer_error::Ok(HeaderValue::from_static("hi")) })
         .build()?;
 
     // Create a Patient resource using a builder.

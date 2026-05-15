@@ -10,12 +10,11 @@
 
 mod json_compare;
 
-use std::fs;
-
-use fhir_model::{
+use ::fhir_model::{
 	BuilderError, Date, DateTime, ParsedReference, WrongResourceType, for_all_versions,
 };
-use serde_json::Value;
+use ::serde_json::Value;
+use ::std::fs;
 
 use self::json_compare::assert_fhir_json_equal;
 

@@ -1,9 +1,8 @@
 //! Trait for additional functionality of Parameters and related types.
 
-use std::fmt::Debug;
-
-use fhir_model::for_all_versions;
-use serde::{Serialize, de::DeserializeOwned};
+use ::fhir_model::for_all_versions;
+use ::serde::{Serialize, de::DeserializeOwned};
+use ::std::fmt::Debug;
 
 /// Trait for additional functionality of Parameters. Only implemented if "builders" feature is
 /// active.
