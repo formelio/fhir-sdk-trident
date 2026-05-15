@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.16.0] - 2026-05-15
+
+- Generated name capitalization changed due to differently generated casings (Inflector -> heck).
+- Bump reqwest, changing feature flags forwards.
+
 ## [0.15.1] - 2026-01-03
 
 - Re-enabled reqwest forms.
