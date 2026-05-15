@@ -1,6 +1,6 @@
 [package]
 name = "fhir-model"
-version = "0.12.1"
+version = "0.13.0"
 exclude = ["/tests/*-examples-json"]
 readme = "README.md"
 edition.workspace = true

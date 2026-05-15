@@ -493,6 +493,17 @@ checksum = "9f1f227452a390804cdb637b74a86990f2a7d7ba4b7d5693aac9b4dd6defd8d6"
 [[package]]
 name = "fhir-model"
 version = "0.12.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1f9da8aa555f09122f981b454315e37fd69d6af598feae71d9bfb168396d6441"
+dependencies = [
+ "base64",
+ "serde",
+ "time",
+]
+
+[[package]]
+name = "fhir-model"
+version = "0.13.0"
 dependencies = [
  "assert-json-diff",
  "base64",
@@ -503,22 +514,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "fhir-model"
-version = "0.12.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1f9da8aa555f09122f981b454315e37fd69d6af598feae71d9bfb168396d6441"
-dependencies = [
- "base64",
- "serde",
- "time",
-]
-
-[[package]]
 name = "fhir-sdk"
-version = "0.15.1"
+version = "0.16.0"
 dependencies = [
  "async-trait",
- "fhir-model 0.12.1",
+ "fhir-model 0.13.0",
  "futures",
  "neuer-error",
  "reqwest",
@@ -683,7 +683,7 @@ dependencies = [
 name = "generate"
 version = "0.1.0"
 dependencies = [
- "fhir-model 0.12.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "fhir-model 0.12.1",
  "heck",
  "neuer-error",
  "prettyplease",
