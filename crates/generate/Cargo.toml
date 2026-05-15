@@ -7,7 +7,7 @@ rust-version.workspace = true
 authors.workspace = true
 
 [dependencies]
-fhir-model = {version = "0.12.1", default-features = false, features = ["stu3", "r4b", "r5"]}
+fhir-model = {version = "0.13.0", default-features = false, features = ["stu3", "r4b", "r5"]}
 heck = "0.5.0"
 neuer-error.workspace = true
 prettyplease = "0.2.37"
