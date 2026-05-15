@@ -61,9 +61,9 @@ dependencies = ["ensure-ci", "test-nextest"]
 [tasks.docker-ci-up]
 cwd = "./docker/"
 command = "docker"
-args = ["compose", "up", "-d"]
+args = ["compose", "up", "-d", "--wait"]
 
 [tasks.docker-ci-down]
 cwd = "./docker/"
 command = "docker"
-args = ["compose", "down", "-v"]
+args = ["compose", "down", "-v", "--wait"]
