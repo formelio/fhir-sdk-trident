@@ -48,14 +48,14 @@ dependencies = [
 ]
 
 
-[tasks.test-nextest]
+[tasks.test-all]
 private = true
 command = "cargo"
-args = ["nextest", "run", "--workspace", "--exclude", "generate", "@@split(FEATURE_SELECTION, )"]
+args = ["test", "--workspace", "--exclude", "generate", "@@split(FEATURE_SELECTION, )"]
 
 [tasks.test]
 description = "Runs all tests for the given feature set."
-dependencies = ["ensure-ci", "test-nextest"]
+dependencies = ["ensure-ci", "test-all"]
 
 
 [tasks.docker-ci-up]

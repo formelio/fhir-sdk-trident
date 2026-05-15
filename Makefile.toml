@@ -107,23 +107,9 @@ command = "cargo"
 args = ["test", "--workspace", "--features", "full"]
 dependencies = ["install-rust-toolchain"]
 
-[tasks.test-nextest]
-description = "Runs all tests via nextest (installs nextest if necessary)."
-install_crate = true
-command = "cargo"
-args = ["nextest", "run", "--workspace", "--features", "full"]
-dependencies = ["install-rust-toolchain"]
-
-[tasks.test-docs]
-description = "Runs all doc-tests (since nextest does not)."
-install_crate = false
-command = "cargo"
-args = ["test", "--workspace", "--doc"]
-dependencies = ["install-rust-toolchain"]
-
 [tasks.test]
 description = "Runs all tests."
-dependencies = ["test-nextest", "test-docs"]
+dependencies = ["test-all"]
 
 
 [tasks.docker]

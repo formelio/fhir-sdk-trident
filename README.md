@@ -81,13 +81,12 @@ For more examples, see the [tests](https://github.com/FlixCoder/fhir-sdk/blob/ma
 
 ## Development & Testing
 
-1. Install [cargo-nextest](https://github.com/nextest-rs/nextest) and [cargo-make](https://github.com/sagiegurari/cargo-make): `cargo install cargo-nextest cargo-make`.
+1. Install [cargo-make](https://github.com/sagiegurari/cargo-make): `cargo install cargo-make`.
 2. From the workspace root directory, you can run the following tasks:
     - **Format code**: `cargo make format`
     - **Check formatting**: `cargo make formatting`
     - **Run docker environment for all FHIR versions**: `cargo make docker-ci-up`
-    - **Run all tests via cargo test**: `cargo make test-all`
-    - **Run all tests via cargo nextest**: `cargo make test`
+    - **Run all tests**: `cargo make test`
     - **Stop docker environment for all FHIR versions**: `cargo make docker-ci-down`
     - **Run docker env, run all tests, stop docker env**: `cargo make ci-tests`
     - **Run clippy for all feature sets, failing on any warnings**: `cargo make clippy`
