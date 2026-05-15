@@ -66,4 +66,4 @@ args = ["compose", "up", "-d", "--wait"]
 [tasks.docker-ci-down]
 cwd = "./docker/"
 command = "docker"
-args = ["compose", "down", "-v", "--wait"]
+args = ["compose", "down", "-v"]
