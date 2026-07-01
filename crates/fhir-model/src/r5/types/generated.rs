@@ -4,7 +4,6 @@ use ::core::num::NonZeroU32;
 use serde::{Serialize, Deserialize};
 #[cfg(feature = "builders")]
 use derive_builder::Builder;
-use super::super::codes;
 #[allow(unused_imports, reason = "Generated code; Integer64 is unused in R4B")]
 use crate::{Base64Binary, Date, DateTime, Instant, Time, Integer64};
 /** Address Type: An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.
@@ -70,7 +69,7 @@ pub struct AddressInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "use")]
-    pub r#use: Option<codes::AddressUse>,
+    pub r#use: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_use")]
@@ -84,7 +83,7 @@ pub struct AddressInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "type")]
-    pub r#type: Option<codes::AddressType>,
+    pub r#type: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -302,7 +301,7 @@ pub struct AgeInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
+    pub comparator: Option<String>,
     /** **Unit representation**
 
  A human-readable form of the unit.
@@ -922,7 +921,7 @@ pub struct AvailabilityAvailableTime {
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "daysOfWeek")]
-    pub days_of_week: Vec<Option<codes::DaysOfWeek>>,
+    pub days_of_week: Vec<Option<String>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_daysOfWeek")]
@@ -1594,7 +1593,7 @@ pub struct ContactPointInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "system")]
-    pub system: Option<codes::ContactPointSystem>,
+    pub system: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_system")]
@@ -1622,7 +1621,7 @@ pub struct ContactPointInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "use")]
-    pub r#use: Option<codes::ContactPointUse>,
+    pub r#use: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_use")]
@@ -1749,7 +1748,7 @@ pub struct ContributorInner {
 
  */
     #[serde(rename = "type")]
-    pub r#type: codes::ContributorType,
+    pub r#type: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -1881,7 +1880,7 @@ pub struct CountInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
+    pub comparator: Option<String>,
     /** **Unit representation**
 
  A human-readable form of the unit.
@@ -1998,7 +1997,7 @@ pub struct DataRequirementInner {
 
  */
     #[serde(rename = "type")]
-    pub r#type: codes::FHIRTypes,
+    pub r#type: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -2551,7 +2550,7 @@ pub struct DataRequirementSort {
 
  */
     #[serde(rename = "direction")]
-    pub direction: codes::SortDirection,
+    pub direction: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_direction")]
@@ -2634,7 +2633,7 @@ pub struct DistanceInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
+    pub comparator: Option<String>,
     /** **Unit representation**
 
  A human-readable form of the unit.
@@ -3186,7 +3185,7 @@ pub struct DurationInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
+    pub comparator: Option<String>,
     /** **Unit representation**
 
  A human-readable form of the unit.
@@ -3328,7 +3327,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "representation")]
-    pub representation: Vec<Option<codes::PropertyRepresentation>>,
+    pub representation: Vec<Option<String>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_representation")]
@@ -3943,7 +3942,7 @@ pub struct ElementDefinitionSlicing {
 
  Allowing additional elements makes for a much for flexible template - it's open for use in wider contexts, but also means that the content of the resource is not closed, and applications have to decide how to handle content not described by the profile. */
     #[serde(rename = "rules")]
-    pub rules: codes::SlicingRules,
+    pub rules: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_rules")]
@@ -3995,7 +3994,7 @@ pub struct ElementDefinitionSlicingDiscriminator {
 
  'pattern' is deprecated - it works exactly the same as 'value'. */
     #[serde(rename = "type")]
-    pub r#type: codes::DiscriminatorType,
+    pub r#type: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -4177,7 +4176,7 @@ pub struct ElementDefinitionType {
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "aggregation")]
-    pub aggregation: Vec<Option<codes::AggregationMode>>,
+    pub aggregation: Vec<Option<String>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_aggregation")]
@@ -4191,7 +4190,7 @@ pub struct ElementDefinitionType {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "versioning")]
-    pub versioning: Option<codes::ReferenceVersionRules>,
+    pub versioning: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_versioning")]
@@ -5809,7 +5808,7 @@ pub struct ElementDefinitionConstraint {
 
  This allows constraints to be asserted as "shall" (error) and "should" (warning). */
     #[serde(rename = "severity")]
-    pub severity: codes::ConstraintSeverity,
+    pub severity: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_severity")]
@@ -5915,7 +5914,7 @@ pub struct ElementDefinitionBinding {
 
  For further discussion, see [Using Terminologies](terminologies.html). */
     #[serde(rename = "strength")]
-    pub strength: codes::BindingStrength,
+    pub strength: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_strength")]
@@ -6009,7 +6008,7 @@ pub struct ElementDefinitionBindingAdditional {
 
  Conformance bindings are in addition to the base binding, not instead of it. */
     #[serde(rename = "purpose")]
-    pub purpose: codes::AdditionalBindingPurposeCodes,
+    pub purpose: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_purpose")]
@@ -7001,7 +7000,7 @@ pub struct HumanNameInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "use")]
-    pub r#use: Option<codes::NameUse>,
+    pub r#use: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_use")]
@@ -7182,7 +7181,7 @@ pub struct IdentifierInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "use")]
-    pub r#use: Option<codes::IdentifierUse>,
+    pub r#use: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_use")]
@@ -7678,7 +7677,7 @@ pub struct MonetaryComponentInner {
 
  */
     #[serde(rename = "type")]
-    pub r#type: codes::PriceComponentType,
+    pub r#type: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -7926,7 +7925,7 @@ pub struct NarrativeInner {
 
  */
     #[serde(rename = "status")]
-    pub status: codes::NarrativeStatus,
+    pub status: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_status")]
@@ -8047,7 +8046,7 @@ pub struct ParameterDefinitionInner {
 
  */
     #[serde(rename = "use")]
-    pub r#use: codes::OperationParameterUse,
+    pub r#use: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_use")]
@@ -8101,7 +8100,7 @@ pub struct ParameterDefinitionInner {
 
  */
     #[serde(rename = "type")]
-    pub r#type: codes::FHIRTypes,
+    pub r#type: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -8499,7 +8498,7 @@ pub struct QuantityInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
+    pub comparator: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_comparator")]
@@ -9132,7 +9131,7 @@ pub struct RelatedArtifactInner {
 
  The presence of both sides of a relationship type (e.g. successor and predecessor) is required to support use cases where one side of a relationship is not represented in FHIR. However, this feature SHALL NOT be used to create bi-directional resource links in FHIR instances. Specifically, following the methodology of "new points to old" and "many points to one", when using related artifact elements to describe and reference FHIR resources, the type element SHALL be drawn from the fhir-related-artifact-type ValueSet. */
     #[serde(rename = "type")]
-    pub r#type: codes::RelatedArtifactType,
+    pub r#type: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -9244,7 +9243,7 @@ pub struct RelatedArtifactInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "publicationStatus")]
-    pub publication_status: Option<codes::PublicationStatus>,
+    pub publication_status: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_publicationStatus")]
@@ -10025,7 +10024,7 @@ Normal practice is to use the 'mo' code as a calendar month when calculating the
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "dayOfWeek")]
-    pub day_of_week: Vec<Option<codes::DaysOfWeek>>,
+    pub day_of_week: Vec<Option<String>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_dayOfWeek")]
@@ -10053,7 +10052,7 @@ Normal practice is to use the 'mo' code as a calendar month when calculating the
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "when")]
-    pub when: Vec<Option<codes::EventTiming>>,
+    pub when: Vec<Option<String>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_when")]
@@ -10167,7 +10166,7 @@ pub struct TriggerDefinitionInner {
 
  */
     #[serde(rename = "type")]
-    pub r#type: codes::TriggerType,
+    pub r#type: String,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_type")]
@@ -10730,7 +10729,7 @@ pub struct MoneyQuantityInner {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
+    pub comparator: Option<String>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_comparator")]
@@ -10883,7 +10882,7 @@ pub struct SimpleQuantityInner {
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "comparator")]
-    pub comparator: Vec<Option<codes::QuantityComparator>>,
+    pub comparator: Vec<Option<String>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[serde(rename = "_comparator")]
