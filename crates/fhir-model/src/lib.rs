@@ -14,8 +14,6 @@ pub mod r4b;
 pub mod r5;
 mod references;
 mod resource_type;
-#[cfg(feature = "stu3")]
-pub mod stu3;
 
 use ::base64::prelude::{BASE64_STANDARD, Engine};
 use ::serde::{Deserialize, Serialize};
@@ -29,7 +27,7 @@ pub use self::{date_time::*, error::*, references::*};
 #[macro_export]
 macro_rules! for_all_versions {
 	($macro:ident) => {
-		for_all_versions!(@inner $macro [stu3 = "stu3", r4b = "r4b", r5 = "r5"]);
+		for_all_versions!(@inner $macro [r4b = "r4b", r5 = "r5"]);
 	};
 	(@inner $macro:ident [$($version:ident = $feature:literal),*]) => {
 		$(
