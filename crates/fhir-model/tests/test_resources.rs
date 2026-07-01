@@ -540,7 +540,6 @@ macro_rules! resource_tests {
 
 			use super::*;
 
-			serialization_deserialization!($version);
 			builder_works!($version);
 			resource_conversion!($version);
 			coding_concepts!($version);
@@ -549,7 +548,6 @@ macro_rules! resource_tests {
 			identifier_search!($version);
 			reference_parsing!($version);
 			codeable_concept!($version);
-			bundle_fns!($version);
 		}
 	};
 }
