@@ -76,7 +76,6 @@ pub fn generate_types(
 		use serde::{Serialize, Deserialize};
 		#[cfg(feature = "builders")]
 		use derive_builder::Builder;
-		use super::super::codes;
 		#[allow(unused_imports, reason = "Generated code; Integer64 is unused in R4B")]
 		use crate::{Base64Binary, Date, DateTime, Instant, Time, Integer64};
 
