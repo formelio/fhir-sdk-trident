@@ -48,9 +48,6 @@ macro_rules! serialization_deserialization {
 
 /// Make sure builder works for every FHIR version.
 macro_rules! builder_works {
-	(stu3) => {
-		builder_works!(test @ RequestGroup);
-	};
 	(r4b) => {
 		builder_works!(test @ RequestGroup);
 	};
@@ -142,9 +139,6 @@ macro_rules! coding_concepts {
 	};
 	(r4b) => {
 		coding_concepts!(@extendable RiskProbability);
-	};
-	(stu3) => {
-		coding_concepts!(@extendable ExtraActivityType);
 	};
 
 	(@extendable $which:ident) => {
@@ -254,78 +248,6 @@ macro_rules! identifier_search {
 
 /// Test reference parsing.
 macro_rules! reference_parsing {
-	(stu3) => {
-		#[test]
-		fn reference_parsing() {
-			let reference = Reference::builder()
-				.reference("https://server.test/fhir/Encounter/1".to_owned())
-				.build()
-				.unwrap();
-			let parsed = reference.parse().expect("parsing reference");
-			assert_eq!(
-				parsed,
-				ParsedReference::Absolute {
-					url: "https://server.test/fhir/Encounter/1",
-					resource_type: Some("Encounter"),
-					id: Some("1")
-				}
-			);
-
-			let reference = Reference::builder()
-				.reference("https://server.test/fhir/Encounter/1/_history/1".to_owned())
-				.build()
-				.unwrap();
-			let parsed = reference.parse().expect("parsing reference");
-			assert_eq!(
-				parsed,
-				ParsedReference::Absolute {
-					url: "https://server.test/fhir/Encounter/1/_history/1",
-					resource_type: Some("Encounter"),
-					id: Some("1")
-				}
-			);
-
-			let reference =
-				Reference::builder().reference("Encounter/1".to_owned()).build().unwrap();
-			let parsed = reference.parse().expect("parsing reference");
-			assert_eq!(
-				parsed,
-				ParsedReference::Relative { resource_type: "Encounter", id: "1", version_id: None }
-			);
-
-			let reference = Reference::builder()
-				.reference("Encounter/1/_history/1".to_owned())
-				.build()
-				.unwrap();
-			let parsed = reference.parse().expect("parsing reference");
-			assert_eq!(
-				parsed,
-				ParsedReference::Relative {
-					resource_type: "Encounter",
-					id: "1",
-					version_id: Some("1")
-				}
-			);
-
-			let reference = Reference::builder().reference("#1".to_owned()).build().unwrap();
-			let parsed = reference.parse().expect("parsing reference");
-			assert_eq!(parsed, ParsedReference::Local { id: "1" });
-
-			let reference = Reference::builder()
-				.reference("http://not-fhir.test/1".to_owned())
-				.build()
-				.unwrap();
-			let parsed = reference.parse().expect("parsing reference");
-			assert_eq!(
-				parsed,
-				ParsedReference::Absolute {
-					url: "http://not-fhir.test/1",
-					resource_type: Some("not-fhir.test"), // irks
-					id: Some("1")
-				}
-			);
-		}
-	};
 	($version:ident) => {
 		#[test]
 		fn reference_parsing() {
@@ -459,7 +381,7 @@ macro_rules! codeable_concept {
 	};
 }
 
-/// Example Bundle resource (search result) compatible with STU3, R4B and R5
+/// Example Bundle resource (search result) compatible with R4B and R5
 /// (due to hacky duplicate information / additional keys).
 const BUNDLE_SEARCH_RESULT_EXAMPLE: &str = r#"
 	{

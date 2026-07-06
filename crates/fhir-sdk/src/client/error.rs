@@ -4,8 +4,6 @@
 use ::fhir_model::r4b;
 #[cfg(feature = "r5")]
 use ::fhir_model::r5;
-#[cfg(feature = "stu3")]
-use ::fhir_model::stu3;
 use ::reqwest::StatusCode;
 use ::thiserror::Error;
 
@@ -70,11 +68,6 @@ pub enum Error {
 	#[error("Server responded with mismatching major FHIR version: {0}")]
 	DifferentFhirVersion(String),
 
-	#[cfg(feature = "stu3")]
-	/// OperationOutcome.
-	#[error("OperationOutcome({0}): {1:?}")]
-	OperationOutcomeStu3(StatusCode, stu3::resources::OperationOutcome),
-
 	#[cfg(feature = "r4b")]
 	/// OperationOutcome.
 	#[error("OperationOutcome({0}): {1:?}")]
@@ -130,13 +123,6 @@ impl Error {
 		} else {
 			Self::Response(status, body)
 		}
-	}
-}
-
-#[cfg(feature = "stu3")]
-impl From<(StatusCode, stu3::resources::OperationOutcome)> for Error {
-	fn from((status, outcome): (StatusCode, stu3::resources::OperationOutcome)) -> Self {
-		Self::OperationOutcomeStu3(status, outcome)
 	}
 }
 

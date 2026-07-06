@@ -158,7 +158,6 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 	let codes_file =
 		fs::read_to_string(format!("{base_folder}/definitions/{version_folder}/valuesets.json"))?;
 	let codes = match version_folder {
-		"stu3" => parse::codes::parse_stu3(&codes_file),
 		"r4b" => parse::codes::parse_r4b(&codes_file),
 		"r5" => parse::codes::parse_r5(&codes_file),
 		_ => panic!("Unrecognized version `{version_folder}`"),
@@ -173,7 +172,6 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 		"{base_folder}/definitions/{version_folder}/profiles-types.json"
 	))?;
 	let mut types = match version_folder {
-		"stu3" => parse::structures::parse_stu3(&types_file),
 		"r4b" => parse::structures::parse_r4b(&types_file),
 		"r5" => parse::structures::parse_r5(&types_file),
 		_ => panic!("Unrecognized version `{version_folder}`"),
@@ -189,7 +187,6 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 		"{base_folder}/definitions/{version_folder}/profiles-resources.json"
 	))?;
 	let mut resources = match version_folder {
-		"stu3" => parse::structures::parse_stu3(&resources_file),
 		"r4b" => parse::structures::parse_r4b(&resources_file),
 		"r5" => parse::structures::parse_r5(&resources_file),
 		_ => panic!("Unrecognized version `{version_folder}`"),

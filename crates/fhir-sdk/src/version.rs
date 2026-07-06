@@ -22,9 +22,6 @@ use crate::{
 	utils::Sealed,
 };
 
-/// FHIR version STU3, "3.0".
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub struct FhirStu3;
 /// FHIR version R4B, "4.3".
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct FhirR4B;
@@ -38,16 +35,10 @@ pub type DefaultVersion = FhirR5;
 #[cfg(all(not(feature = "r5"), feature = "r4b"))]
 /// Default FHIR version (e.g. in client).
 pub type DefaultVersion = FhirR4B;
-#[cfg(all(not(feature = "r5"), not(feature = "r4b"), feature = "stu3"))]
-/// Default FHIR version (e.g. in client).
-pub type DefaultVersion = FhirStu3;
 
 /// Internal macro to convert the module version identifier to the FHIR version
 /// type.
 macro_rules! fhir_version {
-	(stu3) => {
-		$crate::version::FhirStu3
-	};
 	(r4b) => {
 		$crate::version::FhirR4B
 	};
@@ -156,7 +147,6 @@ pub trait FhirVersion: Sealed + Unpin + Send + Sync + 'static {
 		+ Sync;
 }
 
-impl Sealed for FhirStu3 {}
 impl Sealed for FhirR4B {}
 impl Sealed for FhirR5 {}
 

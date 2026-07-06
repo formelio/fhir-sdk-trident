@@ -168,7 +168,6 @@ mod operation_3 {
 /// versions.
 macro_rules! impl_operation_subscription_status {
 	// These versions do not have that operation.
-	(stu3) => {};
 	(r4b) => {};
 	// Implement it for all others.
 	($version:ident) => {
@@ -221,7 +220,6 @@ mod operation_4 {
 /// versions.
 macro_rules! impl_operation_subscription_events {
 	// These versions do not have that operation.
-	(stu3) => {};
 	(r4b) => {};
 	// Implement it for all others.
 	($version:ident) => {

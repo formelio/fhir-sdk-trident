@@ -43,54 +43,93 @@ command = "cargo"
 args = ["clippy", "--workspace", "--all-targets", "--", "-D", "warnings"]
 dependencies = ["install-rust-toolchain"]
 
-[tasks.clippy-stu3-no-builders]
-install_crate = false
-command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "stu3", "--", "-D", "warnings"]
-dependencies = ["install-rust-toolchain"]
-
-[tasks.clippy-stu3-client]
-install_crate = false
-command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "stu3,client", "--", "-D", "warnings"]
-dependencies = ["install-rust-toolchain"]
-
 [tasks.clippy-r4b-no-builders]
 install_crate = false
 command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "r4b", "--", "-D", "warnings"]
+args = [
+	"clippy",
+	"-p",
+	"fhir-sdk",
+	"--all-targets",
+	"--no-default-features",
+	"--features",
+	"r4b",
+	"--",
+	"-D",
+	"warnings",
+]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.clippy-r4b-client]
 install_crate = false
 command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "r4b,client", "--", "-D", "warnings"]
+args = [
+	"clippy",
+	"-p",
+	"fhir-sdk",
+	"--all-targets",
+	"--no-default-features",
+	"--features",
+	"r4b,client",
+	"--",
+	"-D",
+	"warnings",
+]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.clippy-r5-no-builders]
 install_crate = false
 command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "r5", "--", "-D", "warnings"]
+args = [
+	"clippy",
+	"-p",
+	"fhir-sdk",
+	"--all-targets",
+	"--no-default-features",
+	"--features",
+	"r5",
+	"--",
+	"-D",
+	"warnings",
+]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.clippy-r5-client]
 install_crate = false
 command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "r5,client", "--", "-D", "warnings"]
+args = [
+	"clippy",
+	"-p",
+	"fhir-sdk",
+	"--all-targets",
+	"--no-default-features",
+	"--features",
+	"r5,client",
+	"--",
+	"-D",
+	"warnings",
+]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.clippy-all]
 install_crate = false
 command = "cargo"
-args = ["clippy", "--workspace", "--all-targets", "--features", "full", "--", "-D", "warnings"]
+args = [
+	"clippy",
+	"--workspace",
+	"--all-targets",
+	"--features",
+	"full",
+	"--",
+	"-D",
+	"warnings",
+]
 dependencies = ["install-rust-toolchain"]
 
 [tasks.clippy]
 description = "Runs clippy with all various feature sets."
 dependencies = [
 	"clippy-default",
-	"clippy-stu3-no-builders",
-	"clippy-stu3-client",
 	"clippy-r4b-no-builders",
 	"clippy-r4b-client",
 	"clippy-r5-no-builders",
@@ -153,7 +192,11 @@ dependencies = ["formatting", "ci-tests", "clippy"]
 [tasks.generate]
 description = "Run the code generator for fhir-model to produce all FHIR code."
 install_crate = false
-condition = { files_modified = { input = ["./crates/generate/**/*"], output = ["./target/**/generate"] } }
+condition = { files_modified = { input = [
+	"./crates/generate/**/*",
+], output = [
+	"./target/**/generate",
+] } }
 command = "cargo"
 args = ["run", "-p", "generate"]
 dependencies = ["install-rust-toolchain"]

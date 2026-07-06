@@ -20,7 +20,7 @@ use self::{
 	auth::AuthCallback,
 	misc::{make_uuid_header_value, parse_major_fhir_version},
 };
-use crate::version::{DefaultVersion, FhirR4B, FhirR5, FhirStu3, FhirVersion};
+use crate::version::{DefaultVersion, FhirR4B, FhirR5, FhirVersion};
 
 /// FHIR REST Client.
 pub struct Client<Version = DefaultVersion>(Arc<ClientData>, PhantomData<Version>);
@@ -112,12 +112,6 @@ impl<V: FhirVersion> Client<V> {
 	/// Convert to a different version.
 	fn convert_version<Version>(self) -> Client<Version> {
 		Client(self.0, PhantomData)
-	}
-
-	/// Switch the client to STU3 mode.
-	#[must_use]
-	pub fn stu3(self) -> Client<FhirStu3> {
-		self.convert_version()
 	}
 
 	/// Switch the client to R4B mode.

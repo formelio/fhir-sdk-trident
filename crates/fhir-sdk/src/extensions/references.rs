@@ -29,9 +29,6 @@ macro_rules! impl_reference_ext {
 			}
 		}
 	};
-	(@get_type stu3 $s:expr) => {
-		None
-	};
 	(@get_type $version:ident $s:expr) => {
 		$s.r#type.as_deref()
 	};
