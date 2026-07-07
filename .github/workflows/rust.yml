@@ -58,12 +58,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: "STU3"
-            feat_arg: "--no-default-features --features stu3,client"
-            compose_profiles: "hapi-stu3"
           - name: "R4B"
             feat_arg: "--no-default-features --features r4b,client"
-            compose_profiles: "hapi-r4b,medplum-r4"
+            # compose_profiles: "hapi-r4b,medplum-r4"
+            compose_profiles: "hapi-r4b"
           - name: "R5"
             feat_arg: "--no-default-features --features r5,client"
             compose_profiles: "hapi-r5"

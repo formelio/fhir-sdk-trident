@@ -4,9 +4,6 @@ use crate::for_all_versions;
 
 /// Link relation for the next page.
 macro_rules! bundle_next_link_relation {
-	(stu3) => {
-		"next"
-	};
 	(r4b) => {
 		"next"
 	};

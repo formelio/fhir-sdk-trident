@@ -8,10 +8,7 @@ COMPOSE_PROFILES = "hapi-r4b,medplum-r4"
 [tasks.ensure-ci]
 description = "Ensure this is only run in CI. Use the normal Makefile for local use!"
 condition.env_false = ["CARGO_MAKE_CI"]
-script = [
-	"echo Not running in CI, please use the normal Makefile!",
-	"exit 1"
-]
+script = ["echo Not running in CI, please use the normal Makefile!", "exit 1"]
 
 
 [tasks.clippy-default]
@@ -24,21 +21,41 @@ args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--", "-D", "warnings"]
 private = true
 install_crate = false
 command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "r4b,r5", "--", "-D", "warnings"]
+args = [
+	"clippy",
+	"-p",
+	"fhir-sdk",
+	"--all-targets",
+	"--no-default-features",
+	"--features",
+	"r4b,r5",
+	"--",
+	"-D",
+	"warnings",
+]
 
 [tasks.clippy-r4b-r5-client]
 private = true
 install_crate = false
 command = "cargo"
-args = ["clippy", "-p", "fhir-sdk", "--all-targets", "--no-default-features", "--features", "r4b,r5,client", "--", "-D", "warnings"]
+args = [
+	"clippy",
+	"-p",
+	"fhir-sdk",
+	"--all-targets",
+	"--no-default-features",
+	"--features",
+	"r4b,r5,client",
+	"--",
+	"-D",
+	"warnings",
+]
 
 [tasks.clippy]
 description = "Runs clippy with all various feature sets."
 dependencies = [
 	"ensure-ci",
 	"clippy-default",
-	"clippy-stu3-no-builders",
-	"clippy-stu3-client",
 	"clippy-r4b-no-builders",
 	"clippy-r4b-client",
 	"clippy-r5-no-builders",
@@ -51,7 +68,13 @@ dependencies = [
 [tasks.test-all]
 private = true
 command = "cargo"
-args = ["test", "--workspace", "--exclude", "generate", "@@split(FEATURE_SELECTION, )"]
+args = [
+	"test",
+	"--workspace",
+	"--exclude",
+	"generate",
+	"@@split(FEATURE_SELECTION, )",
+]
 
 [tasks.test]
 description = "Runs all tests for the given feature set."

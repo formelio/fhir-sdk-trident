@@ -101,18 +101,6 @@ impl<'a> ParsedReference<'a> {
 
 /// Construct a `ReferenceInner` for the given version.
 macro_rules! make_reference_inner {
-	(stu3, $reference:expr, $type:expr) => {
-		ReferenceInner {
-			id: None,
-			extension: Vec::new(),
-			reference: $reference,
-			reference_ext: None,
-			identifier: None,
-			identifier_ext: None,
-			display: None,
-			display_ext: None,
-		}
-	};
 	(r4b, $reference:expr, $type:expr) => {
 		ReferenceInner {
 			id: None,

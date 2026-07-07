@@ -132,7 +132,7 @@ impl RequestSettings {
 			.record("x_request_id", x_request_id);
 
 		// Send the request, but retry on specific failures.
-		RetryIf::spawn(
+		RetryIf::start(
 			strategy.take(self.retries),
 			async || {
 				tracing::debug!("Sending {} request to {}", request.method(), request.url());

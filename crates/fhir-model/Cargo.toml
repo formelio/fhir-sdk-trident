@@ -20,10 +20,9 @@ workspace = true
 [features]
 default = ["r5", "builders"]
 builders = ["dep:derive_builder"]
-stu3 = []
 r4b = []
 r5 = []
-full = ["stu3", "r4b", "r5", "builders"]
+full = ["r4b", "r5", "builders"]
 
 [dependencies]
 base64 = "0.22.1"
