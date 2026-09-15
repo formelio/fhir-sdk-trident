@@ -180,31 +180,53 @@ impl FromStr for Instant {
 	}
 }
 
+impl Date {
+	/// A missing month or day is `None`, which sorts before any `Some`, placing
+	/// partial dates in front of the more specified values they overlap.
+	/// For example: 2026 < 2026-01 < 2026-01-01
+	const fn sort_key(&self) -> (i32, Option<time::Month>, Option<u8>) {
+		match self {
+			Date::Year(year) => (*year, None, None),
+			Date::YearMonth(year, month) => (*year, Some(*month), None),
+			Date::Date(date) => (date.year(), Some(date.month()), Some(date.day())),
+		}
+	}
+}
+
+impl Ord for Date {
+	fn cmp(&self, other: &Self) -> Ordering {
+		self.sort_key().cmp(&other.sort_key())
+	}
+}
+
 impl PartialOrd for Date {
 	fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-		match (self, other) {
-			(Date::Date(ld), r) => ld.partial_cmp(r),
-			(l, Date::Date(rd)) => l.partial_cmp(rd),
-			(Date::Year(ly), Date::Year(ry)) => ly.partial_cmp(ry),
-			(Date::Year(ly), Date::YearMonth(ry, _rm)) => ly.partial_cmp(ry),
-			(Date::YearMonth(ly, _lm), Date::Year(ry)) => ly.partial_cmp(ry),
-			(Date::YearMonth(ly, lm), Date::YearMonth(ry, rm)) => match ly.partial_cmp(ry)? {
-				Ordering::Less => Some(Ordering::Less),
-				Ordering::Greater => Some(Ordering::Greater),
-				Ordering::Equal => (*lm as u8).partial_cmp(&(*rm as u8)),
-			},
+		Some(self.cmp(other))
+	}
+}
+
+impl DateTime {
+	/// Sorts DateTime on date and optional time
+	const fn sort_key(&self) -> ((i32, Option<time::Month>, Option<u8>), Option<time::Time>) {
+		match self {
+			DateTime::Date(date) => (date.sort_key(), None),
+			DateTime::DateTime(Instant(datetime)) => {
+				let utc = datetime.to_offset(time::UtcOffset::UTC);
+				((utc.year(), Some(utc.month()), Some(utc.day())), Some(utc.time()))
+			}
 		}
+	}
+}
+
+impl Ord for DateTime {
+	fn cmp(&self, other: &Self) -> Ordering {
+		self.sort_key().cmp(&other.sort_key())
 	}
 }
 
 impl PartialOrd for DateTime {
 	fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-		match (self, other) {
-			(DateTime::Date(ld), DateTime::Date(rd)) => ld.partial_cmp(rd),
-			(DateTime::Date(ld), DateTime::DateTime(Instant(rdtm))) => ld.partial_cmp(&rdtm.date()),
-			(DateTime::DateTime(Instant(ldtm)), DateTime::Date(rd)) => ldtm.date().partial_cmp(rd),
-			(DateTime::DateTime(ldtm), DateTime::DateTime(rdtm)) => ldtm.partial_cmp(rdtm),
-		}
+		Some(self.cmp(other))
 	}
 }
 
@@ -289,5 +311,169 @@ impl PartialOrd<DateTime> for OffsetDateTime {
 			DateTime::Date(date) => self.date().partial_cmp(date),
 			DateTime::DateTime(Instant(datetime)) => self.partial_cmp(datetime),
 		}
+	}
+}
+
+#[cfg(test)]
+mod tests {
+	use rstest::rstest;
+	use time::macros::{date, datetime};
+
+	use super::*;
+
+	#[rstest]
+	#[case(Date::Year(2024), Date::Year(2025), Ordering::Less)]
+	#[case(Date::Year(2024), Date::Year(2024), Ordering::Equal)]
+	#[case(Date::Year(2024), Date::Year(2023), Ordering::Greater)]
+	// Less precise sorts before the more precise values it overlaps.
+	#[case(Date::Year(2024), Date::YearMonth(2024, time::Month::February), Ordering::Less)]
+	#[case(Date::Year(2024), Date::YearMonth(2025, time::Month::February), Ordering::Less)]
+	#[case(Date::Year(2024), Date::YearMonth(2023, time::Month::February), Ordering::Greater)]
+	#[case(Date::Year(2024), Date::Date(date!(2024 - 02 - 11)), Ordering::Less)]
+	#[case(Date::Year(2024), Date::Date(date!(2025 - 02 - 11)), Ordering::Less)]
+	#[case(Date::Year(2024), Date::Date(date!(2023 - 02 - 11)), Ordering::Greater)]
+	#[case(
+		Date::YearMonth(2024, time::Month::February),
+		Date::Date(date!(2024 - 02 - 11)),
+		Ordering::Less
+	)]
+	#[case(
+		Date::YearMonth(2024, time::Month::February),
+		Date::Date(date!(2024 - 03 - 11)),
+		Ordering::Less
+	)]
+	#[case(
+		Date::YearMonth(2024, time::Month::February),
+		Date::Date(date!(2024 - 01 - 11)),
+		Ordering::Greater
+	)]
+	fn date_orders(#[case] a: Date, #[case] b: Date, #[case] expected: Ordering) {
+		assert_eq!(a.cmp(&b), expected);
+	}
+
+	#[rstest]
+	#[case(DateTime::Date(Date::Year(2024)), DateTime::Date(Date::Year(2025)), Ordering::Less)]
+	#[case(DateTime::Date(Date::Year(2024)), DateTime::Date(Date::Year(2024)), Ordering::Equal)]
+	#[case(DateTime::Date(Date::Year(2024)), DateTime::Date(Date::Year(2023)), Ordering::Greater)]
+	#[case(
+		DateTime::Date(Date::Year(2024)),
+		DateTime::Date(Date::YearMonth(2024, time::Month::February)),
+		Ordering::Less
+	)]
+	#[case(
+		DateTime::Date(Date::Year(2024)),
+		DateTime::Date(Date::Date(date!(2024 - 02 - 11))),
+		Ordering::Less
+	)]
+	#[case(
+		DateTime::Date(Date::YearMonth(2024, time::Month::February)),
+		DateTime::Date(Date::Date(date!(2024 - 02 - 11))),
+		Ordering::Less
+	)]
+	// A dateTime carrying a time sorts after any lower-precision date it
+	// overlaps, and after the bare date of the same day.
+	#[case(
+		DateTime::DateTime(Instant(datetime!(2024-02-11 13:00:00 UTC))),
+		DateTime::Date(Date::Year(2024)),
+		Ordering::Greater
+	)]
+	#[case(
+		DateTime::DateTime(Instant(datetime!(2024-02-11 13:00:00 UTC))),
+		DateTime::Date(Date::YearMonth(2024, time::Month::February)),
+		Ordering::Greater
+	)]
+	#[case(
+		DateTime::DateTime(Instant(datetime!(2024-02-11 13:00:00 UTC))),
+		DateTime::Date(Date::Date(date!(2024 - 02 - 11))),
+		Ordering::Greater
+	)]
+	#[case(
+		DateTime::DateTime(Instant(datetime!(2024-02-11 13:00:00 UTC))),
+		DateTime::Date(Date::Date(date!(2024 - 02 - 12))),
+		Ordering::Less
+	)]
+	#[case(
+		DateTime::DateTime(Instant(datetime!(2024-11-01 13:00:00 UTC))),
+		DateTime::DateTime(Instant(datetime!(2024-11-01 14:00:00 UTC))),
+		Ordering::Less
+	)]
+	fn datetime_orders(#[case] a: DateTime, #[case] b: DateTime, #[case] expected: Ordering) {
+		assert_eq!(a.cmp(&b), expected);
+	}
+
+	/// Sample datetimes covering both precisions and offsets, for exhaustive
+	/// pairwise checks of the ordering invariants.
+	fn sample_datetimes() -> Vec<DateTime> {
+		[
+			"2023",
+			"2024",
+			"2024-01",
+			"2024-03",
+			"2024-03-07",
+			"2024-03-08",
+			"2024-03-07T00:00:00Z",
+			"2024-03-07T12:34:56Z",
+			"2024-03-07T12:34:56.789Z",
+			"2024-03-07T23:00:00Z",
+			"2024-03-08T00:30:00+02:00",
+			"2024-03-08T09:00:00+02:00",
+		]
+		.iter()
+		.map(|s| DateTime::from_str(s).unwrap())
+		.collect()
+	}
+
+	#[test]
+	fn datetime_order_agrees_with_eq() {
+		for a in sample_datetimes() {
+			for b in sample_datetimes() {
+				assert_eq!(
+					a.cmp(&b) == Ordering::Equal,
+					a == b,
+					"{a:?} vs {b:?}: cmp {:?}, eq {}",
+					a.cmp(&b),
+					a == b
+				);
+			}
+		}
+	}
+
+	#[test]
+	fn datetime_order_is_total() {
+		for a in sample_datetimes() {
+			for b in sample_datetimes() {
+				assert_eq!(a.cmp(&b), b.cmp(&a).reverse(), "{a:?} vs {b:?} not antisymmetric");
+				for c in sample_datetimes() {
+					if a <= b && b <= c {
+						assert!(a <= c, "{a:?} <= {b:?} <= {c:?} but {a:?} > {c:?}");
+					}
+				}
+			}
+		}
+	}
+
+	#[rstest]
+	// Less precise sorts before the values it overlaps.
+	#[case("2024", "2024-01")]
+	#[case("2024-03", "2024-03-07")]
+	#[case("2024-03-07", "2024-03-07T00:00:00Z")]
+	// Chronological where precision allows.
+	#[case("2023", "2024")]
+	#[case("2024-01", "2024-03")]
+	#[case("2024-03-07", "2024-03-08")]
+	// Offsets normalise to UTC: 00:30+02:00 is 22:30Z, before 23:00Z.
+	#[case("2024-03-08T00:30:00+02:00", "2024-03-07T23:00:00Z")]
+	fn datetime_sorts_before(#[case] less: &str, #[case] greater: &str) {
+		let less = DateTime::from_str(less).unwrap();
+		let greater = DateTime::from_str(greater).unwrap();
+		assert!(less < greater, "expected {less:?} < {greater:?}");
+	}
+
+	#[test]
+	fn equal_instants_in_different_offsets_are_equal() {
+		let utc = DateTime::from_str("2024-03-07T22:30:00Z").unwrap();
+		let plus_two = DateTime::from_str("2024-03-08T00:30:00+02:00").unwrap();
+		assert_eq!(utc, plus_two);
+		assert_eq!(utc.cmp(&plus_two), Ordering::Equal);
 	}
 }

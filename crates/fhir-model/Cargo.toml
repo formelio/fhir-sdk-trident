@@ -38,6 +38,7 @@ time = { version = "0.3.47", features = [
 
 [dev-dependencies]
 assert-json-diff = "2.0.2"
+rstest = "0.23"
 serde_json.workspace = true
 
 [package.metadata.docs.rs]
